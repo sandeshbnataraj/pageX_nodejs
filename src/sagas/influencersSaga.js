@@ -7,10 +7,9 @@ import {
 } from "../actions/types";
 
 function callUserInfluencer() {
-  return axios.get("/api/influencers");
+  // return axios.get("/api/influencers");
 }
 function* GetInfluencers() {
-  console.log("dsfjfjkasdh sfdjbkf");
   try {
     const influencersRes = yield call(callUserInfluencer);
     yield put({ type: FETCHED_INFLUENTIAL_MEMBERS, payload: influencersRes });

@@ -6,7 +6,7 @@ import { fetchedWorkTypes } from "../actions/workTypeAction";
 
 function* GetWorkTypes() {
   try {
-    const response = yield axios.get(`/api/worktypes`);
+    // const response = yield axios.get(`/api/worktypes`);
     yield put(fetchedWorkTypes(response.data));
   } catch (error) {
     console.warn(error);

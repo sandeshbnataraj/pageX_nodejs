@@ -2,9 +2,9 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Card, DropdownButton, Dropdown, Form, Image } from "react-bootstrap";
-import { faGlobe, faKey } from "@fortawesome/free-solid-svg-icons";
+
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRocket } from "@fortawesome/free-solid-svg-icons";
+
 import { BASE_URL } from "../../app.constants";
 import { postPublication } from "../../actions/userPublicationAction";
 import { getWorkTypes } from "../../actions/workTypeAction";
@@ -101,10 +101,10 @@ class Publication extends Component {
   renderAccessTypeItem = accessType => (
     <React.Fragment>
       {accessType && accessType.accesstype === "Public" && (
-        <FontAwesomeIcon icon={faGlobe} className="access-type__icon" />
+        <FontAwesomeIcon className="access-type__icon" />
       )}
       {accessType && accessType.accesstype === "Restricted" && (
-        <FontAwesomeIcon icon={faKey} className="access-type__icon" />
+        <FontAwesomeIcon className="access-type__icon" />
       )}
       {accessType ? accessType.accesstype : ""}
     </React.Fragment>
@@ -161,7 +161,6 @@ class Publication extends Component {
             disabled={!this.isValid()}
             className="publish-button__work btn"
           >
-            <FontAwesomeIcon icon={faRocket} className="access-type__icon" />
             <span className="ml-2">Publish</span>
           </button>
         </div>
@@ -178,7 +177,6 @@ class Publication extends Component {
             onClick={this.onSubmit}
             className="publish-button__update btn"
           >
-            <FontAwesomeIcon icon={faRocket} className="access-type__icon" />
             <span className="ml-2"> Publish</span>
           </button>
         </div>
@@ -189,9 +187,21 @@ class Publication extends Component {
   render() {
     const { className } = this.props;
     let sty = "shadow p-3 mb-5 rounded";
+    let dropDown = "";
     if (this.props.from) {
       if (this.props.from === "modal") {
         sty = "";
+        dropDown = (
+          <Form.Group
+            controlId="exampleForm.ControlSelect1"
+            className="ml-1 mt-1 mb-0 "
+          >
+            <Form.Control as="select">
+              <option>One Piece</option>
+              <option>Collection</option>
+            </Form.Control>
+          </Form.Group>
+        );
       }
     }
 
@@ -231,6 +241,7 @@ class Publication extends Component {
             onRemove={this.onRemove}
           />
           {this.workTypeDropdown}
+          {dropDown}
           {this.accessTypeDropdown}
           {this.publishUpdateButton}
         </div>
