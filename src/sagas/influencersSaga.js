@@ -7,7 +7,7 @@ import {
 } from "../actions/types";
 
 function callUserInfluencer() {
-  // return axios.get("/api/influencers");
+  return axios.get("/api/influencers");
 }
 function* GetInfluencers() {
   try {

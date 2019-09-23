@@ -23,9 +23,9 @@ export function editUserProfile(data) {
     postData = new FormData();
     Object.keys(data).forEach(param => postData.append(param, data[param]));
   }
-  // return axios.post("/api/userupdate/", postData);
+  return axios.post("/api/userupdate/", postData);
 }
 
 export function unFollowUser(data) {
-  // return axios.post("/api/unfollow/", data);
+  return axios.post("/api/unfollow/", data);
 }
