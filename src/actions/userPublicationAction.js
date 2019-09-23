@@ -14,11 +14,11 @@ import axios from "axios";
 
 // TODO: this is not a redux/flux action, this is just an api call which is not reflected to redux store/history
 export function likePost(postId) {
-  return axios.get("/api/userpublications/likes/" + postId + "/");
+  // return axios.get("/api/userpublications/likes/" + postId + "/");
 }
 // TODO: this is not a redux/flux action, this is just an api call which is not reflected to redux store/history
 export function promotePost(postId) {
-  return axios.get("/api/userpublications/promotes/" + postId + "/");
+  // return axios.get("/api/userpublications/promotes/" + postId + "/");
 }
 export const postPublication = data => ({ type: POST_PUBLICATION, data });
 export const postedPublication = () => ({ type: POSTED_PUBLICATION });

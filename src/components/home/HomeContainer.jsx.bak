@@ -3,7 +3,7 @@ import HomeView from './HomeView';
 import { connect } from 'react-redux';
 import Loader from '../Loader/Loader';
 import { getUserInfo, getUserFollowers } from '../../actions/userInfoActions';
-import { getUserPublications } from '../../actions/userPublicationAction';
+import { getUserPublications, clearUserPublication } from '../../actions/userPublicationAction';
 
 class HomeContainer extends React.Component {
   state = {
@@ -12,6 +12,8 @@ class HomeContainer extends React.Component {
 
   componentDidMount() {
     this.props.getUserPublications();
+    console.log(this.props)
+    console.log('####')
     // TODO: move this to header??
     // Header is always mounted, while HomeContainer is mounted on the /home page only
     if (!this.props.userInfo.user) {
@@ -21,6 +23,9 @@ class HomeContainer extends React.Component {
       this.props.getUserFollowers();
     }
     document.addEventListener('scroll', this.trackScrolling);
+  }
+  componentWillUnmount() {
+    this.props.dispatch(clearUserPublication())
   }
 
   loadMoreData = () => {
