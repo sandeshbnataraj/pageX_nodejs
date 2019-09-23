@@ -70,7 +70,7 @@ class Header extends Component {
         <Container>
           <Row>
             <Col>
-              <Navbar expand="lg" className="navbar ">
+              <Navbar expand="lg" className="navbar">
                 <Navbar.Brand className="navbar__brand text-white">
                   <Link to="/home">pageX</Link>
                 </Navbar.Brand>
@@ -107,6 +107,7 @@ class Header extends Component {
                       <span className="btn-text ml-1"> Create</span>
                     </Button>
                   </Nav>
+
                   <Nav className="navbar-right">
                     <Button className="navbar-right__button">
                       <FontAwesomeIcon

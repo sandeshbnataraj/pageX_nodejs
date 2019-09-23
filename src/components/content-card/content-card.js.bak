@@ -5,9 +5,9 @@ import queryString from 'query-string';
 import isEqual from 'lodash/isEqual';
 import { Link } from 'react-router-dom'
 import { Card, Image, Popover, Overlay ,Dropdown} from 'react-bootstrap';
-import { faEllipsisH, faBolt , faThumbsUp } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+  ;
 import { BASE_URL } from '../../app.constants';
 import { likePost, promotePost } from '../../actions/userPublicationAction'
 import {unFollowUser } from '../../actions/userInfoActions'
@@ -190,7 +190,7 @@ export default class ContentCard extends Component {
   render() {
     const { userPublication, userPublications } = this.props;
     return (
-      <div className="content-card shadow p-3 mb-5">
+      <div className="content-card">
         <Popup
           show={this.state.modalShow}
           onHide={this.handleClose}
@@ -242,14 +242,11 @@ export default class ContentCard extends Component {
                   <FontAwesomeIcon icon={faEllipsisH} className="content-card__icon" />
                       <Dropdown.Menu >
                       {((this.state.isPromoted || userPublication.promoted) || (this.state.isLiked || userPublication.liked)) ?
-                        <Dropdown.Item eventKey="1"><span className='count-value like-done '>Promote Piece</span></Dropdown.Item> :
-                        <Dropdown.Item eventKey="1" onClick={() => { this.promotePost(userPublication.id) }}>Promote Piece</Dropdown.Item> 
-                       
+                        <Dropdown.Item eventKey="1" onClick={() => { this.promotePost(userPublication.id) }}>Promote Piece</Dropdown.Item> : 
+                        <Dropdown.Item eventKey="1"><span className='count-value like-done '>Promote Piece</span></Dropdown.Item> 
                         }
                         <Dropdown.Item eventKey="2">Add To Collection</Dropdown.Item>
-                        {userPublication.following ===1 ? 
-                        <Dropdown.Item eventKey="3" onClick={() => {this.unFollow(userPublication.user_id)}}>Unfollow</Dropdown.Item>:
-                        <Dropdown.Item eventKey="3"><span className='count-value like-done '>Unfollow</span></Dropdown.Item>}
+                        <Dropdown.Item eventKey="3" onClick={() => {this.unFollow(userPublication.user_id)}}>Unfollow</Dropdown.Item>
                       </Dropdown.Menu>
                   </Dropdown.Toggle>
                   </Dropdown>
@@ -277,23 +274,13 @@ export default class ContentCard extends Component {
             <div className='content-card-footer d-flex justify-content-between'>
               <div className='content-card-footer__item'>
                 {((this.state.isLiked || userPublication.liked) || (this.state.isPromoted || userPublication.promoted ) )?
-                  <span><span onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }} className='count-value'>{this.formatCount(this.state.likeCount)}</span> <span className='count-value like-done '>
-                    <FontAwesomeIcon
-                       icon={faThumbsUp}
-                    />
-                </span></span> :
-                  <span><span className='count-value' onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }}>{this.formatCount(this.state.likeCount)} </span> <span onClick={() => { this.likePost(userPublication.id) }} className='count-value'>
-                     <FontAwesomeIcon
-                       icon={faThumbsUp}
-                    /></span> </span>}
+                  <span><span onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }} className='count-value'>{this.formatCount(this.state.likeCount)}</span> <span className='count-value like-done '>Like</span></span> :
+                  <span><span className='count-value' onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }}>{this.formatCount(this.state.likeCount)} </span> <span onClick={() => { this.likePost(userPublication.id) }} className='count-value'>Like</span> </span>}
               </div>
               <div className='content-card-footer__item'>
                 {((this.state.isPromoted || userPublication.promoted) || (this.state.isLiked || userPublication.liked)) ?
                   <span><span onClick={() => { this.handleOpenUsersList('promotes', userPublication.id) }} className='count-value'>{this.formatCount(this.state.promoteCount)}</span> <span className='count-value like-done '>Promote</span></span> :
-                  <span><span onClick={() => { this.handleOpenUsersList('promotes', userPublication.id) }} className='count-value'>{this.formatCount(this.state.promoteCount)}</span><span onClick={() => { this.promotePost(userPublication.id) }} className='count-value'> Promote <FontAwesomeIcon
-                  icon={faBolt}
-                 
-                /></span></span>
+                  <span><span onClick={() => { this.handleOpenUsersList('promotes', userPublication.id) }} className='count-value'>{this.formatCount(this.state.promoteCount)}</span><span onClick={() => { this.promotePost(userPublication.id) }} className='count-value'> Promote</span></span>
                 }
               </div>
             </div>
@@ -304,4 +291,3 @@ export default class ContentCard extends Component {
     );
   }
 }
-

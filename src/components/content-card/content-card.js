@@ -5,7 +5,7 @@ import queryString from 'query-string';
 import isEqual from 'lodash/isEqual';
 import { Link } from 'react-router-dom'
 import { Card, Image, Popover, Overlay ,Dropdown} from 'react-bootstrap';
-import { faEllipsisH, faBolt , faThumbsUp , faGlobe } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisH, faBolt , faThumbsUp  } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { BASE_URL } from '../../app.constants';
@@ -255,7 +255,7 @@ export default class ContentCard extends Component {
                   </Dropdown>
                 </span>
                 <p className="content-card__public">
-                  <span><FontAwesomeIcon icon = {faGlobe } className = "mr-1"></FontAwesomeIcon></span>Public
+                  Public
                   </p>
               </div>
             </div>
