@@ -11,6 +11,7 @@ function sampleLogin() {
 
 function callLoginApi(data) {
   return axios.post("/api/authenticate/", data);
+
 }
 
 function* Login(action) {

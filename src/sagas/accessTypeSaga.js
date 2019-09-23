@@ -6,7 +6,7 @@ import { fetchedAccessTypes } from "../actions/accessTypeAction";
 
 function* GetAccessTypes() {
   try {
-    const response = yield axios.get(`/api/accesstypes`);
+    // const response = yield axios.get(`/api/accesstypes`);
     yield put(fetchedAccessTypes(response.data));
   } catch (error) {
     console.warn(error);
