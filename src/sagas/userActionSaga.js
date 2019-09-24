@@ -36,6 +36,7 @@ export function* userInfoWatcher() {
 // User followers saga
 function callUserFollowersApi() {
   return axios.get("/api/influencers");
+
   // return {
   //   data: [
   //     {
@@ -66,6 +67,7 @@ export function* userFollowerWatcher() {
 // User partners saga
 function callUserPartnersApi() {
   return axios.get("/api/partners");
+
 }
 function* getPartners() {
   try {
