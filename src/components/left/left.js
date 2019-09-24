@@ -63,13 +63,14 @@ export default class Left extends Component {
     const user = this.props.user ? this.props.user[0] : null;
     const heightClass = this.props.from === "profile" ? "" : "limitHeight";
     const shadow = this.props.from === "profile" ? "shadow p-3 mb-5" : "";
+    const bg = this.props.from === "profile" ? "bg-lit" : "";
     return (
       <React.Fragment>
         {user && (
-          <div className={`left ${shadow} ${heightClass}`}>
+          <div className={`left ${shadow} ${heightClass} ${bg}`}>
             {this.props.from === "profile" ? (
               <React.Fragment>
-                <div className="">
+                <div>
                   <label htmlFor="profile-pic">
                     <div className="img-box">
                       <Image
@@ -133,7 +134,7 @@ export default class Left extends Component {
                   className="left-meta__fa"
                 />
               </figure>
-              {user && user.school}
+              <span className="smaller-text"> {user && user.school}</span>
             </div>
             <div className="left-meta">
               <figure className="left-meta__icon">
@@ -142,7 +143,7 @@ export default class Left extends Component {
                   className="left-meta__fa"
                 />
               </figure>
-              {user && user.location}
+              <span className="smaller-text"> {user && user.location} </span>
             </div>
             <section className="people-wrapper">
               <div className="people">

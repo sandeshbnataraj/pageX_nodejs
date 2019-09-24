@@ -4,6 +4,7 @@ import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import ContentCard from "../content-card/content-card";
 import Left from "../left/left";
+import Button from "react-bootstrap/Button";
 import Publication from "../publication/Publication";
 import { Link } from "react-router-dom";
 import queryString from "query-string";
@@ -23,7 +24,7 @@ export default class HomeView extends React.Component {
         {/** TODO: extract styles to scss */}
         <Container className="content">
           <Row>
-            <Col md={3}>
+            <Col md={2}>
               <Left from="home" user={this.props.userInfo.user} />
             </Col>
             <Col md={6}>
@@ -53,7 +54,7 @@ export default class HomeView extends React.Component {
                   {this.props.influencers &&
                     this.props.influencers.map((value, index) => {
                       return (
-                        <Row key={index}>
+                        <Row key={index} className="row-mem">
                           <Col
                             md={3}
                             className="member d-flex flex-row align-items-start "
@@ -69,7 +70,7 @@ export default class HomeView extends React.Component {
                               />
                             </figure>
                           </Col>
-                          <Col md={9}>
+                          <Col md={9} className="row-mem">
                             <div>
                               <h6 className="member__username">
                                 <Link
@@ -95,6 +96,7 @@ export default class HomeView extends React.Component {
                                 {value.email}
                               </p>
                             </div>
+                            <div className="cover-pic-img-content"></div>
                           </Col>
                         </Row>
                       );

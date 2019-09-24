@@ -91,3 +91,29 @@
 .member-caption i {
   margin-right: 5px;
 }
+
+.cover-pic-img-content {
+  padding: 15px !important;
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+}
+.row-mem:hover {
+  background: #ffff65;
+}
+.row-mem:hover .cover-pic-img-content {
+  bottom: 16px;
+  right: -76px;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  background-image: url("del.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
