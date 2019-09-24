@@ -24,7 +24,7 @@ export default class HomeView extends React.Component {
         {/** TODO: extract styles to scss */}
         <Container className="content">
           <Row>
-            <Col md={3}>
+            <Col md={2}>
               <Left from="home" user={this.props.userInfo.user} />
             </Col>
             <Col md={6}>
@@ -54,7 +54,7 @@ export default class HomeView extends React.Component {
                   {this.props.influencers &&
                     this.props.influencers.map((value, index) => {
                       return (
-                        <Row key={index}>
+                        <Row key={index} className="row-mem">
                           <Col
                             md={3}
                             className="member d-flex flex-row align-items-start "

@@ -102,9 +102,12 @@
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
 }
+.row-mem:hover {
+  background: #ffff65;
+}
 .row-mem:hover .cover-pic-img-content {
-  bottom: 25px;
-  right: -70px;
+  bottom: 16px;
+  right: -76px;
   transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
