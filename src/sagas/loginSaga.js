@@ -10,7 +10,7 @@ function sampleLogin() {
 }
 
 function callLoginApi(data) {
-  // return axios.post("/api/authenticate/", data);
+  return axios.post("/api/authenticate/", data);
 }
 
 function* Login(action) {
@@ -23,9 +23,9 @@ function* Login(action) {
       payload: loginResponse.data.auth_token
     });
     //this is for testing with mock should component sampleLogin and uncommnet above statement once testing with real api
-    // let loginResponse = yield sampleLogin()
-    // yield localStorage.setItem('AUTH_TOKEN', loginResponse);
-    // yield put({ type: LOGIN_FAILED, payload:loginResponse});
+    // let loginResponse = yield sampleLogin();
+    // yield localStorage.setItem("AUTH_TOKEN", loginResponse);
+    // yield put({ type: LOGIN_FAILED, payload: loginResponse });
   } catch (error) {
     console.warn(error);
     yield put({

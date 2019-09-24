@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import Attachment from "../generic/Attachment";
 
 import "./Publication.scss";
+import DropdownItem from "react-bootstrap/DropdownItem";
 
 const INITIAL_STATE = {
   text: "",
@@ -192,15 +193,10 @@ class Publication extends Component {
       if (this.props.from === "modal") {
         sty = "";
         dropDown = (
-          <Form.Group
-            controlId="exampleForm.ControlSelect1"
-            className="ml-1 mt-1 mb-0 "
-          >
-            <Form.Control as="select">
-              <option>One Piece</option>
-              <option>Collection</option>
-            </Form.Control>
-          </Form.Group>
+          <DropdownButton className="ml-1 flex-grow-1" title="One Piece">
+            <DropdownItem>One Piece</DropdownItem>
+            <DropdownItem>Collection</DropdownItem>
+          </DropdownButton>
         );
       }
     }

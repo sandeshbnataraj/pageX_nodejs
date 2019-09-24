@@ -19,7 +19,7 @@ function callUserInfoApi() {
 function* getUserInfo() {
   try {
     const infoResponse = yield call(callUserInfoApi);
-    // const infoResponse = yield callUserInfoApi()
+
     yield put({ type: FETCHED_USER_INFO, payload: infoResponse });
   } catch (error) {
     yield put({
@@ -35,7 +35,7 @@ export function* userInfoWatcher() {
 
 // User followers saga
 function callUserFollowersApi() {
-  // return axios.get("/api/influencers");
+  return axios.get("/api/influencers");
   // return {
   //   data: [
   //     {
@@ -50,7 +50,6 @@ function callUserFollowersApi() {
 function* getUserFollowers() {
   try {
     const followersResponse = yield call(callUserFollowersApi);
-    // const followersResponse = yield callUserFollowersApi()
 
     yield put({ type: FETCHED_USER_FOLLOWERS, payload: followersResponse });
   } catch (error) {
@@ -66,7 +65,7 @@ export function* userFollowerWatcher() {
 
 // User partners saga
 function callUserPartnersApi() {
-  // return axios.get("/api/partners");
+  return axios.get("/api/partners");
 }
 function* getPartners() {
   try {

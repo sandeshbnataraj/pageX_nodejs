@@ -78,10 +78,10 @@ function* postPublication(action) {
 
 function* getUserPublicationsWorker(action) {
   try {
-    // yield put({ type: FETCHING_USER_PUBLICATIONS });
-    // const pubResponse = yield axios.get("/api/userpublications", {
-    //   params: action.query
-    // });
+    yield put({ type: FETCHING_USER_PUBLICATIONS });
+    const pubResponse = yield axios.get("/api/userpublications", {
+      params: action.query
+    });
     if (!isEmpty(pubResponse.data)) {
       if (action.query && action.query.page > 1) {
         yield put({
@@ -104,10 +104,10 @@ function* getUserPublicationsWorker(action) {
 
 function* getLikedUsers(action) {
   try {
-    // yield put({ type: FETCHING_LIKED_USERS });
-    // const pubResponse = yield axios.get("/api/likedby/" + action.id, {
-    //   params: action.query
-    // });
+    yield put({ type: FETCHING_LIKED_USERS });
+    const pubResponse = yield axios.get("/api/likedby/" + action.id, {
+      params: action.query
+    });
     if (pubResponse && pubResponse.data) {
       yield put({ type: FETCHED_LIKED_USERS, payload: pubResponse });
     } else {
@@ -122,10 +122,10 @@ function* getLikedUsers(action) {
 }
 function* getPromotedUsers(action) {
   try {
-    // yield put({ type: FETCHING_PROMOTED_USERS });
-    // const pubResponse = yield axios.get("/api/promotedby/" + action.id, {
-    //   params: action.query
-    // });
+    yield put({ type: FETCHING_PROMOTED_USERS });
+    const pubResponse = yield axios.get("/api/promotedby/" + action.id, {
+      params: action.query
+    });
     if (pubResponse && pubResponse.data) {
       yield put({ type: FETCHED_PROMOTED_USERS, payload: pubResponse });
     } else {
@@ -142,12 +142,12 @@ function* getPromotedUsers(action) {
 function* getOtherUserPublicationsWorker(action) {
   try {
     yield put({ type: FETCHING_OTHER_USER_PUBLICATIONS });
-    // const pubResponse = yield axios.get(
-    //   "/api/otheruserpublications/" + action.id + "/",
-    //   {
-    //     params: action.query
-    //   }
-    // );
+    const pubResponse = yield axios.get(
+      "/api/otheruserpublications/" + action.id + "/",
+      {
+        params: action.query
+      }
+    );
     if (!isEmpty(pubResponse.data)) {
       if (action.query && action.query.page > 1) {
         yield put({
