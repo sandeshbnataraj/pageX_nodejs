@@ -112,18 +112,12 @@ export default class ProfileView extends React.Component {
               <div className="d-flex mb-2 justify-content-center">
                 <Button
                   size="sm"
-                  className="mr-3"
+                  className="mr-3 cover-btn"
                   onClick={this.editProfile}
-                  style={{ color: "#1b1b4c", borderColor: "#1b1b4c" }}
-                  variant="outline-success"
                 >
                   Save
                 </Button>
-                <Button
-                  size="sm"
-                  onClick={this.onCancel}
-                  variant="outline-danger"
-                >
+                <Button size="sm cover-btn" onClick={this.onCancel}>
                   Cancel
                 </Button>
               </div>

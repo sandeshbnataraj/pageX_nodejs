@@ -13,6 +13,8 @@
     width: 12.5rem;
     height: 10.5rem;
     object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 1px 1px #f2f2f2;
     border-radius: $border-radius;
   }
   &__username {
@@ -23,7 +25,7 @@
   &__description {
     @extend %p;
     color: $c-darkest;
-    margin: 1rem 0;
+    margin-bottom: 1rem;
   }
 }
 .btn-container {
@@ -119,5 +121,14 @@
   }
 }
 .limitHeight {
-  height: 230px !important;
+  height: 195px !important;
+  width: 60%;
+}
+cover-btn {
+  color: #fff !important;
+  background: #4b6584 !important;
+  &:hover {
+    background: white !important;
+    color: #4b6584 !important;
+  }
 }

@@ -62,10 +62,11 @@ export default class Left extends Component {
   render() {
     const user = this.props.user ? this.props.user[0] : null;
     const heightClass = this.props.from === "profile" ? "" : "limitHeight";
+    const shadow = this.props.from === "profile" ? "shadow p-3 mb-5" : "";
     return (
       <React.Fragment>
         {user && (
-          <div className={`left shadow p-3 mb-5 ${heightClass}`}>
+          <div className={`left ${shadow} ${heightClass}`}>
             {this.props.from === "profile" ? (
               <React.Fragment>
                 <div className="">
@@ -89,19 +90,16 @@ export default class Left extends Component {
                     <div className="d-flex btn-container justify-content-center mb-2">
                       <Button
                         size="sm"
-                        className="mr-3"
+                        className="mr-3 cover-btn"
                         onClick={this.editProfile}
-                        style={{ color: "#1b1b4c", borderColor: "#1b1b4c" }}
-                        variant="outline-success"
                       >
                         Save
                       </Button>
                       <Button
-                        size="sm"
+                        size="sm  cover-btn"
                         onClick={() => {
                           this.initAvatar();
                         }}
-                        variant="outline-danger"
                       >
                         Cancel
                       </Button>
@@ -124,7 +122,7 @@ export default class Left extends Component {
                 close={() => this.setState({ enlargeImage: false })}
               />
             )}
-            <h3 className="left__username">
+            <h3 className="left__username text-center mt-2">
               {user && user.first_name + " " + user.last_name}
             </h3>
             <p className="left__description text-center">{user && user.bio}</p>

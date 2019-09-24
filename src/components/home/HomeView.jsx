@@ -23,7 +23,7 @@ export default class HomeView extends React.Component {
         {/** TODO: extract styles to scss */}
         <Container className="content">
           <Row>
-            <Col md={2}>
+            <Col md={3}>
               <Left from="home" user={this.props.userInfo.user} />
             </Col>
             <Col md={6}>
