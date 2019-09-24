@@ -1,20 +1,20 @@
 import React from 'react'
 import EditProfleView from './EditProfileView'
-import { getUserInfo,editUserProfile } from '../../actions/userInfoActions';
+import { getUserInfo, editUserProfile } from '../../actions/userInfoActions';
 import { connect } from 'react-redux'
 class EditProfileContainer extends React.Component {
     constructor() {
         super()
         this.editProfile = this.editProfile.bind(this)
     }
-    componentDidMount() {
+    componentDidMount() {        
         if (!this.props.userInfo.user) {
             this.props.getUserInfo();
         }
     }
     editProfile(data) {
         editUserProfile(data).then(
-            (res) =>{
+            (res) => {
                 this.props.getUserInfo();
             }
         )
@@ -29,7 +29,7 @@ class EditProfileContainer extends React.Component {
     }
 }
 const mapStateToProps = state => ({
-    userInfo: state.userInfo,
+    userInfo: state.userInfo,    
 });
 
-export default connect(mapStateToProps,{getUserInfo})(EditProfileContainer)
+export default connect(mapStateToProps, { getUserInfo })(EditProfileContainer)
