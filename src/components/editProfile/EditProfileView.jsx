@@ -60,12 +60,13 @@ class EditProfileView extends React.Component {
             bio: userInfo.bio,
             avatar: BASE_URL + userInfo.avatar,
             coverpic: BASE_URL + userInfo.coverPic,
-        })
+        })        
     }
     handleSave() {
         let changedFields = this.state.fieldsChanged
-        if (!isEmpty(changedFields) && !this.state.empty_bio && !this.state.empty_dob && !this.state.empty_email && !this.state.empty_first_name && !this.state.empty_last_name && this.state.is_valid_email)
+        if (!isEmpty(changedFields) && !this.state.empty_bio && !this.state.empty_email && !this.state.empty_first_name && this.state.is_valid_email) {
             this.props.editProfile(changedFields)
+        }
     }
     handleDateOfBirth(value) {
         this.birthDate = value
@@ -139,83 +140,69 @@ class EditProfileView extends React.Component {
     render() {
         return (
             <React.Fragment>
+
                 <Row>
-                    <Col md={8}>
+                    <Col md={12}>
                         <h1 className='edit-profile-header'>Edit Profile</h1>
-                        <p className='sub-heading-edit-profile'>People in Eycon will get to know you with following information</p>
+                        <p className='sub-heading-edit-profile'>People in pageX will get to know you with following information</p>
                     </Col>
-                    <Col md={4}>
-                        <div className='d-flex'>
-                            <div className='mr-3'><Button onClick={() => { this.initValues() }} variant="outline-danger">Cancel</Button></div>
-                            <div ><Button onClick={this.handleSave} variant="outline-success">Save</Button></div>
-                        </div>
+                </Row>
+                <Row className='mt-4'>
+                    <Col md={12}>
+                        <label className='sub-heading-edit-profile'><i className="fa fa-sticky-note">&nbsp;</i>Bio <i className="text-danger">*</i></label>
+                        <textarea type="text" className={this.state.empty_bio ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Bio" onChange={(event) => this.handleTextFieldChanges('bio', event.target.value)} value={this.state.bio} />
+                        {this.state.empty_bio && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This Field cannot be empty</span>}
                     </Col>
+
                 </Row>
 
                 <Row className='mt-5'>
                     <Col md={6}>
-                        <label className='sub-heading-edit-profile'>First name</label>
-                        <input type="text" className={this.state.empty_first_name ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="First name" onChange={(event) => this.handleTextFieldChanges('first_name', event.target.value)} value={this.state.first_name} />
-                        {this.state.empty_first_name && <span style={{ color: 'red' }}>This Field cannot be empty</span>}
+                        <label className='sub-heading-edit-profile'><i className="fa fa-user">&nbsp;</i>Full name <i className="text-danger">*</i></label>
+                        <input type="text" className={this.state.empty_first_name ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Full name" onChange={(event) => this.handleTextFieldChanges('first_name', event.target.value)} value={this.state.first_name} />
+                        {this.state.empty_first_name && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This Field cannot be empty</span>}
                     </Col>
-                    <Col md={6}>
-                        <label className='sub-heading-edit-profile'>Last name</label>
-                        <input type="text" className={this.state.empty_last_name ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Last name" onChange={(event) => this.handleTextFieldChanges('last_name', event.target.value)} value={this.state.last_name} />
-                        {this.state.empty_last_name && <span style={{ color: 'red' }}>This Field cannot be empty</span>}
-                    </Col>
-                </Row>
 
-                <Row className='mt-4'>
                     <Col md={6}>
-                        <label className='sub-heading-edit-profile'>Date of birth</label>
-                        <div className={this.state.empty_dob ? 'empty-edit-profile-border form-control' : "form-control"}>
-                            <DatePicker
-                                placeholderText='Date of birth'
-                                selected={this.birthDate}
-                                onChange={this.handleDateOfBirth}
-                            />
-                        </div>
-                        {this.state.empty_dob && <span style={{ color: 'red' }}>This Field cannot be empty</span>}
-                        {/* <input type="date" className="form-control" placeholder="Date of birth" onChange={(event)=>this.handleTextFieldChanges('dob',event.target.value)} value={this.state.dob} /> */}
-                    </Col>
-                    <Col md={6}>
-                        <label className='sub-heading-edit-profile'>Email</label>
+                        <label className='sub-heading-edit-profile'><i className="fa fa-envelope">&nbsp;</i>Email <i className="text-danger">*</i></label>
                         <input type="text" className={this.state.empty_email || !this.state.is_valid_email ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Email" onChange={(event) => this.handleTextFieldChanges('email', event.target.value)} value={this.state.email} />
-                        {this.state.empty_email && <span style={{ color: 'red' }}>This Field cannot be empty</span>}
-                        {!this.state.is_valid_email && <span style={{ color: 'red' }}>This email id is not valid</span>}
+                        {this.state.empty_email && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This Field cannot be empty</span>}
+                        {!this.state.is_valid_email && !this.state.empty_email && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This email id is not valid</span>}
                     </Col>
                 </Row>
 
                 <Row className='mt-4'>
                     <Col md={6}>
-                        <label className='sub-heading-edit-profile'>Phone</label>
+                        <label className='sub-heading-edit-profile'><i className="fa fa-phone-alt">&nbsp;</i>Phone</label>
                         <input type="text" className="form-control" placeholder="Phone" onChange={(event) => this.handleTextFieldChanges('phone', event.target.value)} value={this.state.phone} />
                     </Col>
                     <Col md={6}>
-                        <label className='sub-heading-edit-profile'>Profession</label>
-                        <input type="text" className="form-control" placeholder="Profession" onChange={(event) => this.handleTextFieldChanges('profession', event.target.value)} value={this.state.profession} />
-                    </Col>
-                </Row>
-
-                <Row className='mt-4'>
-                    <Col md={6}>
-                        <label className='sub-heading-edit-profile'>School/Work</label>
+                        <label className='sub-heading-edit-profile'><i className="fa fa-graduation-cap">&nbsp;</i>School/Work</label>
                         <input type="text" className="form-control" placeholder="School" onChange={(event) => this.handleTextFieldChanges('school', event.target.value)} value={this.state.school} />
-                    </Col>
-                    <Col md={6}>
-                        <label className='sub-heading-edit-profile'>Location</label>
-                        <input type="text" className="form-control" placeholder="Phone" onChange={(event) => this.handleTextFieldChanges('location', event.target.value)} value={this.state.location} />
                     </Col>
                 </Row>
 
                 <Row className='mt-4'>
                     <Col md={12}>
-                        <label className='sub-heading-edit-profile'>Bio</label>
-                        <textarea type="text" className={this.state.empty_bio ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Bio" onChange={(event) => this.handleTextFieldChanges('bio', event.target.value)} value={this.state.bio} />
-                        {this.state.empty_bio && <span style={{ color: 'red' }}>This Field cannot be empty</span>}
+                        <label className='sub-heading-edit-profile'><i className="fa fa-map-marker">&nbsp;</i>Location</label>
+                        <input type="text" className="form-control" placeholder="Phone" onChange={(event) => this.handleTextFieldChanges('location', event.target.value)} value={this.state.location} />
                     </Col>
-
                 </Row>
+                <Row className='mt-4 mb-4'>
+                    <Col md={12}>
+                        <div className='d-flex'>
+                            <div >
+                                <button
+                                    className='btn btn-block btn-primary btnLogin mt-2 pl-5 pr-5'
+                                    onClick={this.handleSave}
+                                >
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </Col>
+                </Row>
+
             </React.Fragment>
         )
     }
