@@ -280,14 +280,10 @@ export default class ContentCard extends Component {
               <div className='content-card-footer__item'>
                 {((this.state.isLiked || userPublication.liked) || (this.state.isPromoted || userPublication.promoted ) )?
                   <span><span onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }} className='count-value'>{this.formatCount(this.state.likeCount)}</span> <span className='count-value like-done '>
-                    <FontAwesomeIcon
-                       icon={faThumbsUp}
-                    />
+                   Comment
                 </span></span> :
                   <span><span className='count-value' onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }}>{this.formatCount(this.state.likeCount)} </span> <span onClick={() => { this.likePost(userPublication.id) }} className='count-value'>
-                     <FontAwesomeIcon
-                       icon={faThumbsUp}
-                    /></span> </span>}
+                      Comment</span> </span>}
               </div>
               <div className='content-card-footer__item'>
                 {((this.state.isPromoted || userPublication.promoted) || (this.state.isLiked || userPublication.liked)) ?

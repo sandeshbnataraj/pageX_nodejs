@@ -51,6 +51,7 @@ function callUserFollowersApi() {
 function* getUserFollowers() {
   try {
     const followersResponse = yield call(callUserFollowersApi);
+
     yield put({ type: FETCHED_USER_FOLLOWERS, payload: followersResponse });
   } catch (error) {
     yield put({
