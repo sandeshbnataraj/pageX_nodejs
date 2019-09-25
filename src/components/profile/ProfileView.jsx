@@ -9,6 +9,7 @@ import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 import { BASE_URL } from "../../app.constants";
 import isEqual from "lodash/isEqual";
+import { followUser } from "../../actions/userInfoActions";
 
 export default class ProfileView extends React.Component {
   constructor(props) {
@@ -73,6 +74,14 @@ export default class ProfileView extends React.Component {
   onCancel = () => {
     this.componentDidMount();
   };
+
+  followThisUser(user_id) {
+    let postData = {
+      'user_id': user_id
+    }
+    followUser(postData);
+  }
+
   render() {
     const user = this.props.userInfo.user
       ? this.props.userInfo.user[0]
@@ -91,13 +100,13 @@ export default class ProfileView extends React.Component {
                       user && !this.state.coverPicChanged
                         ? user.coverpic
                         : this.state.coverPicChanged
-                        ? this.state.coverpicView
-                        : ""
+                          ? this.state.coverpicView
+                          : ""
                     }
                     className={`${coverSize}`}
                     onLoad={this.onChangeImg}
                   />
-                  <div className="cover-pic-img-content"></div>
+                  {this.state.currentUserState === 1 && <div className="cover-pic-img-content"></div>}
                 </div>
               </label>
               <input
@@ -133,6 +142,7 @@ export default class ProfileView extends React.Component {
                 followers={this.props.userFollowers}
                 user={this.props.userInfo.user}
                 editProfile={this.props.editProfile}
+                currentUserState={this.props.currentUserState}
               />
             </Col>
             <Col md={6} className="offset-md-3">
@@ -155,16 +165,16 @@ export default class ProfileView extends React.Component {
               ) : this.props.currentUserState === 0 ? (
                 user && user.followed === 1 ? (
                   <button className="mt-2  btn edit-profile-button-background">
-                    Connected{" "}
+                    Connected
                   </button>
                 ) : (
-                  <button className="mt-2  btn edit-profile-button-background">
-                    Connect{" "}
-                  </button>
-                )
+                    <button className="mt-2  btn edit-profile-button-background" onClick={(e) => { this.followThisUser(user.id)}}>
+                      Connect
+                    </button>
+                  )
               ) : (
-                ""
-              )}
+                    ""
+                  )}
             </Col>
           </Row>
         </Container>

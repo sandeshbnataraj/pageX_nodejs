@@ -29,3 +29,7 @@ export function editUserProfile(data) {
 export function unFollowUser(data) {
   return axios.post("/api/unfollow/", data);
 }
+
+export function followUser(data) {
+  return axios.post("/api/follow/", data);
+}
