@@ -98,9 +98,6 @@
   position: absolute;
   width: 100%;
   box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
 }
 .row-mem:hover {
   background: #4b6584;
@@ -109,12 +106,8 @@
   color: white !important;
 }
 .row-mem:hover .cover-pic-img-content {
-  bottom: 24px;
+  bottom: 35px;
   right: -76px;
-
-  transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
   background-image: url("cross1.jpg");
   background-repeat: no-repeat;
   background-position: center;
