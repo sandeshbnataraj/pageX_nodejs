@@ -61,13 +61,12 @@ export default class Left extends Component {
   }
   render() {
     const user = this.props.user ? this.props.user[0] : null;
-    const heightClass = this.props.from === "profile" ? "" : "limitHeight";
-    const shadow = this.props.from === "profile" ? "shadow p-3 mb-5" : "";
-    const bg = this.props.from === "profile" ? "bg-lit" : "";
+
+    const bg = this.props.from === "profile" ? "bg-lit p-3" : "";
     return (
       <React.Fragment>
         {user && (
-          <div className={`left ${shadow} ${heightClass} ${bg}`}>
+          <div className={`left shadow  mb-5 ${bg}`}>
             {this.props.from === "profile" ? (
               <React.Fragment>
                 <div>
@@ -114,7 +113,7 @@ export default class Left extends Component {
                   this.setState({ enlargeImage: true });
                 }}
                 src={this.state.avatarView}
-                className="left__avatarhome"
+                className="left__avatarhome limitHeight ml-5"
               />
             )}
             {this.state.enlargeImage && (
@@ -127,8 +126,8 @@ export default class Left extends Component {
               {user && user.first_name + " " + user.last_name}
             </h3>
             <p className="left__description text-center">{user && user.bio}</p>
-            <div className="left-meta">
-              <figure className="left-meta__icon">
+            <div className="left-meta ml-1">
+              <figure className="left-meta__icon ">
                 <FontAwesomeIcon
                   icon={faGraduationCap}
                   className="left-meta__fa"
@@ -136,7 +135,7 @@ export default class Left extends Component {
               </figure>
               <span className="smaller-text"> {user && user.school}</span>
             </div>
-            <div className="left-meta">
+            <div className="left-meta ml-1">
               <figure className="left-meta__icon">
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}

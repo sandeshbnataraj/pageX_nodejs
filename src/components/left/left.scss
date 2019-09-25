@@ -121,7 +121,8 @@
   }
 }
 .limitHeight {
-  height: 195px !important;
+  width: 55% !important;
+  margin-left: 5rem !important;
 }
 cover-btn {
   color: #fff !important;
@@ -132,8 +133,7 @@ cover-btn {
   }
 }
 .smaller-text {
-  font-size: 14px;
-  letter-spacing: -0.3px;
+  font-size: 12px;
 }
 .bg-lit {
   background: #f5fafe;

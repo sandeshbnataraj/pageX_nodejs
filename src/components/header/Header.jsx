@@ -130,10 +130,10 @@ class Header extends Component {
 
                     <NavDropdown
                       className="navbar-dropdown text-white"
+                      id="basic-nav-dropdown"
                       title={
                         user && user[0].first_name + " " + user[0].last_name
                       }
-                      id="basic-nav-dropdown"
                     >
                       {pathname !== "/profile" && (
                         <LinkContainer to="/profile">
