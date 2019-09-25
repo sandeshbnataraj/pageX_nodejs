@@ -142,3 +142,40 @@
 .btn-text {
   font-weight: 400;
 }
+
+.dropdown-menu.show {
+  border-color: #4b6584 !important;
+  left: -55px;
+}
+
+.dropdown-item {
+  color: #4b6584 !important;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+  color: white !important;
+  background: #4b6584 !important;
+}
+
+.notActive.dropdown-item.active {
+  color: #4b6584 !important;
+  background: transparent !important;
+}
+
+.NavDropDownArrow {
+  right: 5px;
+  top: -12px;
+  width: 0;
+  height: 0;
+  border-left: 15px solid transparent;
+  border-right: 15px solid transparent;
+  border-bottom: 15px solid white;
+  position: absolute;
+}
+
+@media (max-width: 991px) {
+  .NavDropDownArrow {
+    display: none !important;
+  }
+}
