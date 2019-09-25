@@ -58,7 +58,7 @@ class Header extends Component {
   };
 
   render() {
-    const { user } = this.props;
+    const { user } = this.props;    
     const { pathname } = this.props.location;
     return (
       <header className="header text-white">
@@ -135,9 +135,10 @@ class Header extends Component {
                       }
                       id="basic-nav-dropdown"
                     >
+                      <div class="NavDropDownArrow" ></div>
                       {pathname !== "/profile" && (
                         <LinkContainer to="/profile">
-                          <NavDropdown.Item className="navbar-dropdown__item">
+                          <NavDropdown.Item className="navbar-dropdown__item notActive">
                             <FontAwesomeIcon
                               icon={faUser}
                               className="access-type__icon"

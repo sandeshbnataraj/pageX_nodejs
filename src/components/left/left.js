@@ -64,7 +64,7 @@ export default class Left extends Component {
     const heightClass = this.props.from === "profile" ? "" : "limitHeight";
     const shadow = this.props.from === "profile" ? "shadow p-3 mb-5" : "";
     const bg = this.props.from === "profile" ? "bg-lit" : "";
-    return (
+     return (
       <React.Fragment>
         {user && (
           <div className={`left ${shadow} ${heightClass} ${bg}`}>
@@ -77,7 +77,7 @@ export default class Left extends Component {
                         src={this.state.avatarView}
                         className="left__avatar"
                       />
-                      <div className="img-content"></div>
+                     {this.props.currentUserState === 1 && <div className="img-content"></div> }
                     </div>
                   </label>
                   <input

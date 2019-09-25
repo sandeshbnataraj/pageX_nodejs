@@ -46,7 +46,7 @@ function callUserFollowersApi() {
   //       email: "jhon@gmail.com"
   //     }
   //   ]
-  // };
+  // };  
 }
 function* getUserFollowers() {
   try {
