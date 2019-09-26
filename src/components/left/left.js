@@ -81,13 +81,14 @@ export default class Left extends Component {
                      {this.props.currentUserState === 1 && <div className="img-content"></div> }
                     </div>
                   </label>
-                  <input
+                  {this.props.currentUserState === 1 &&  <input
                     className="d-none"
                     type="file"
                     id="profile-pic"
                     name="profile-pic"
                     onChange={this.onFileUploadAvatar}
                   />
+                  }
                   {this.state.avatarChanged && (
                     <div className="d-flex btn-container justify-content-center mb-2">
                       <Button

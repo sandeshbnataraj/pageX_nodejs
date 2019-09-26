@@ -153,7 +153,7 @@ class EditProfileView extends React.Component {
                     <Col md={12}>
                         <label className='sub-heading-edit-profile'><FontAwesomeIcon
                             icon={faStickyNote}
-                        />Bio <i className="text-danger">*</i></label>
+                        />&nbsp;Bio <i className="text-danger">*</i></label>
                         <textarea type="text" className={this.state.empty_bio ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Bio" onChange={(event) => this.handleTextFieldChanges('bio', event.target.value)} value={this.state.bio} />
                         {this.state.empty_bio && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This Field cannot be empty</span>}
                     </Col>
@@ -164,7 +164,7 @@ class EditProfileView extends React.Component {
                     <Col md={6}>
                         <label className='sub-heading-edit-profile'><FontAwesomeIcon
                             icon={faUser}
-                        />Full name <i className="text-danger">*</i></label>
+                        />&nbsp;Full name <i className="text-danger">*</i></label>
                         <input type="text" className={this.state.empty_first_name ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Full name" onChange={(event) => this.handleTextFieldChanges('first_name', event.target.value)} value={this.state.first_name} />
                         {this.state.empty_first_name && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This Field cannot be empty</span>}
                     </Col>
@@ -172,7 +172,7 @@ class EditProfileView extends React.Component {
                     <Col md={6}>
                         <label className='sub-heading-edit-profile'><FontAwesomeIcon
                             icon={faEnvelope}
-                        />Email <i className="text-danger">*</i></label>
+                        />&nbsp;Email <i className="text-danger">*</i></label>
                         <input type="text" className={this.state.empty_email || !this.state.is_valid_email ? 'empty-edit-profile-border form-control' : "form-control"} placeholder="Email" onChange={(event) => this.handleTextFieldChanges('email', event.target.value)} value={this.state.email} />
                         {this.state.empty_email && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This Field cannot be empty</span>}
                         {!this.state.is_valid_email && !this.state.empty_email && <span className="alert text-danger"><i className="fa fa-warning">&nbsp;</i>This email id is not valid</span>}
@@ -183,13 +183,13 @@ class EditProfileView extends React.Component {
                     <Col md={6}>
                         <label className='sub-heading-edit-profile'><FontAwesomeIcon
                   icon={faPhone}
-                />Phone</label>
+                />&nbsp;Phone</label>
                         <input type="text" className="form-control" placeholder="Phone" onChange={(event) => this.handleTextFieldChanges('phone', event.target.value)} value={this.state.phone} />
                     </Col>
                     <Col md={6}>
                         <label className='sub-heading-edit-profile'><FontAwesomeIcon
                   icon={faGraduationCap}
-                />School/Work</label>
+                />&nbsp;School/Work</label>
                         <input type="text" className="form-control" placeholder="School" onChange={(event) => this.handleTextFieldChanges('school', event.target.value)} value={this.state.school} />
                     </Col>
                 </Row>
