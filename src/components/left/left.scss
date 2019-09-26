@@ -16,11 +16,14 @@
     border: 3px solid white;
     box-shadow: 1px 1px #f2f2f2;
     border-radius: $border-radius;
+    margin-left: -18px;
   }
   &__username {
     @extend %h2;
     color: $c-darkest;
     margin-top: 1rem;
+
+    font-size: 1em;
   }
   &__description {
     @extend %p;
@@ -62,12 +65,14 @@
 .left-meta {
   margin-top: -0.5rem;
   color: $c-dark;
+  margin-left: 0rem;
   @extend %p;
 
   &__icon {
     width: 1.5rem;
     margin-right: 0.5rem;
     margin-top: 0.5rem;
+
     display: inline-block;
   }
 }
@@ -121,8 +126,7 @@
   }
 }
 .limitHeight {
-  width: 70% !important;
-  margin-left: 2rem !important;
+  height: 195px !important;
 }
 cover-btn {
   color: #fff !important;
