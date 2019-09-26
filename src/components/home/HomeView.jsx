@@ -24,7 +24,7 @@ export default class HomeView extends React.Component {
         {/** TODO: extract styles to scss */}
         <Container fluid className="content">
           <Row>
-            <Col md={3}>
+            <Col md={2} className="offset-md-1">
               <Left from="home" user={this.props.userInfo.user} />
             </Col>
             <Col md={6}>

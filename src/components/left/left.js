@@ -113,7 +113,7 @@ export default class Left extends Component {
                   this.setState({ enlargeImage: true });
                 }}
                 src={this.state.avatarView}
-                className="left__avatarhome limitHeight ml-5"
+                className="left__avatarhome limitHeight"
               />
             )}
             {this.state.enlargeImage && (
