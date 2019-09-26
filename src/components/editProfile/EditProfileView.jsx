@@ -183,13 +183,13 @@ class EditProfileView extends React.Component {
                     <Col md={6}>
                         <label className='sub-heading-edit-profile'><FontAwesomeIcon
                   icon={faPhone}
-                /><i className="fa fa-phone-alt">&nbsp;</i>Phone</label>
+                />Phone</label>
                         <input type="text" className="form-control" placeholder="Phone" onChange={(event) => this.handleTextFieldChanges('phone', event.target.value)} value={this.state.phone} />
                     </Col>
                     <Col md={6}>
                         <label className='sub-heading-edit-profile'><FontAwesomeIcon
                   icon={faGraduationCap}
-                /><i className="fa fa-graduation-cap">&nbsp;</i>School/Work</label>
+                />School/Work</label>
                         <input type="text" className="form-control" placeholder="School" onChange={(event) => this.handleTextFieldChanges('school', event.target.value)} value={this.state.school} />
                     </Col>
                 </Row>
