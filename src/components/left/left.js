@@ -68,7 +68,7 @@ export default class Left extends Component {
 
       <React.Fragment>
         {user && (
-          <div className={`left shadow  mb-5 ${bg}`}>
+          <div className={"left shadow  mb-5 " + bg}>
             {this.props.from === "profile" ? (
               <React.Fragment>
                 <div>
@@ -78,10 +78,10 @@ export default class Left extends Component {
                         src={this.state.avatarView}
                         className="left__avatar"
                       />
-                     {this.props.currentUserState === 1 && <div className="img-content"></div> }
+                      {this.props.currentUserState === 1 && <div className="img-content"></div>}
                     </div>
                   </label>
-                  {this.props.currentUserState === 1 &&  <input
+                  {this.props.currentUserState === 1 && <input
                     className="d-none"
                     type="file"
                     id="profile-pic"
@@ -111,14 +111,14 @@ export default class Left extends Component {
                 </div>
               </React.Fragment>
             ) : (
-              <Image
-                onClick={() => {
-                  this.setState({ enlargeImage: true });
-                }}
-                src={this.state.avatarView}
-                className="left__avatarhome limitHeight ml-5"
-              />
-            )}
+                <Image
+                  onClick={() => {
+                    this.setState({ enlargeImage: true });
+                  }}
+                  src={this.state.avatarView}
+                  className="left__avatarhome limitHeight ml-5"
+                />
+              )}
             {this.state.enlargeImage && (
               <ProfilePic
                 imgsrc={this.state.avatarView}
