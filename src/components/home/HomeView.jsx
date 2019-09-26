@@ -22,9 +22,9 @@ export default class HomeView extends React.Component {
       >
         {" "}
         {/** TODO: extract styles to scss */}
-        <Container fluid className="content">
+        <Container className="content">
           <Row>
-            <Col md={3}>
+            <Col md={2} className="mr-2r">
               <Left from="home" user={this.props.userInfo.user} />
             </Col>
             <Col md={6}>
@@ -47,7 +47,7 @@ export default class HomeView extends React.Component {
                 </div>
               )}
             </Col>
-            <Col md={3}>
+            <Col md={3} className="ml-5">
               <aside className="members shadow p-3 mb-5">
                 <h6 className="members__title">Influential members</h6>
                 <div className="members__container">

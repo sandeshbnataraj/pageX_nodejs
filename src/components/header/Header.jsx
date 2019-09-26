@@ -58,7 +58,7 @@ class Header extends Component {
   };
 
   render() {
-    const { user } = this.props;    
+    const { user } = this.props;
     const { pathname } = this.props.location;
     return (
       <header className="header text-white">
@@ -130,12 +130,12 @@ class Header extends Component {
 
                     <NavDropdown
                       className="navbar-dropdown text-white"
-                      id="basic-nav-dropdown"
                       title={
                         user && user[0].first_name + " " + user[0].last_name
                       }
+                      id="basic-nav-dropdown"
                     >
-                      <div class="NavDropDownArrow" ></div>
+                      <div className="NavDropDownArrow"></div>
                       {pathname !== "/profile" && (
                         <LinkContainer to="/profile">
                           <NavDropdown.Item className="navbar-dropdown__item notActive">
