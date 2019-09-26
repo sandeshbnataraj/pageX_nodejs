@@ -18,8 +18,8 @@ export default class ProfileView extends React.Component {
       coverPicChanged: false,
       coverpic: "",
       coverpicView: "",
-
-      coverSize: ""
+      coverSize: "",
+      followed: false
     };
     this.onFileUploadCoverPic = this.onFileUploadCoverPic.bind(this);
     this.initProfilePic = this.initProfilePic.bind(this);
@@ -77,16 +77,21 @@ export default class ProfileView extends React.Component {
 
   followThisUser(user_id) {
     let postData = {
-      'user_id': user_id
+      'followeduser_id': user_id
     }
-    followUser(postData);
+    followUser(postData).then(
+      (res) => {
+        const followed = res & res.data & res.data.id ? true : false;
+        this.setState({ followed });
+      }
+    );
   }
 
   render() {
     const user = this.props.userInfo.user
       ? this.props.userInfo.user[0]
       : undefined;
-    const { coverSize } = this.state;
+    const { coverSize, followed } = this.state;
 
     return (
       <section style={{ backgroundColor: "#F5FAFE", paddingTop: "1rem" }}>
@@ -109,13 +114,15 @@ export default class ProfileView extends React.Component {
                   {this.state.currentUserState === 1 && <div className="cover-pic-img-content"></div>}
                 </div>
               </label>
-              <input
-                className="d-none"
-                type="file"
-                id="cover-pic"
-                name="cover-pic"
-                onChange={this.onFileUploadCoverPic}
-              />
+              {this.state.currentUserState === 1 &&
+                <input
+                  className="d-none"
+                  type="file"
+                  id="cover-pic"
+                  name="cover-pic"
+                  onChange={this.onFileUploadCoverPic}
+                />
+              }
             </div>
             {this.state.coverPicChanged && (
               <div className="d-flex mb-2 justify-content-center">
@@ -163,14 +170,14 @@ export default class ProfileView extends React.Component {
                   Edit Profile
                 </Link>
               ) : this.props.currentUserState === 0 ? (
-                user && user.followed === 1 ? (
+                (user && user.followed === 1 || followed) ? (
                   <button className="mt-2  btn edit-profile-button-background">
                     Connected
                   </button>
                 ) : (
-                    <button className="mt-2  btn edit-profile-button-background" onClick={(e) => { this.followThisUser(user.id)}}>
+                    <button className="mt-2  btn edit-profile-button-background" onClick={(e) => { this.followThisUser(user.id) }}>
                       Connect
-                    </button>
+                </button>
                   )
               ) : (
                     ""
