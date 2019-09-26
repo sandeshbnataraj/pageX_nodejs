@@ -5,6 +5,11 @@ import moment from 'moment'
 import "react-datepicker/dist/react-datepicker.css";
 import isEmail from 'validator/lib/isEmail';
 
+import {
+  faAddressBook, faEnvelope, faLock, faUser, faPhone
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 class LoginView extends React.Component {
   constructor() {
     super()
@@ -92,7 +97,9 @@ class LoginView extends React.Component {
 
             <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
               <div className="input-group-prepend">
-                <span className="input-group-text"><i className="fa fa-address-book"></i></span>
+                <span className="input-group-text"> <FontAwesomeIcon
+                  icon={faAddressBook}
+                /></span>
               </div>
 
               <input
@@ -104,11 +111,14 @@ class LoginView extends React.Component {
               />
             </div>
             {this.state.isSignUpFullNameEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
+
               <i className="fa fa-warning"></i > Full name is required</div>}
 
             <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
               <div className="input-group-prepend">
-                <span className="input-group-text"><i className="fa fa-envelope"></i></span>
+                <span className="input-group-text"><FontAwesomeIcon
+                  icon={faEnvelope}
+                /></span>
               </div>
 
               <input
@@ -128,7 +138,9 @@ class LoginView extends React.Component {
 
             <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
               <div className="input-group-prepend">
-                <span className="input-group-text"><i className="fa fa-lock"></i></span>
+                <span className="input-group-text"><FontAwesomeIcon
+                  icon={faLock}
+                /></span>
               </div>
 
               <input
@@ -144,7 +156,9 @@ class LoginView extends React.Component {
 
             <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
               <div className="input-group-prepend">
-                <span className="input-group-text"><i className="fa fa-mobile"></i></span>
+                <span className="input-group-text"><FontAwesomeIcon
+                  icon={faPhone}
+                /></span>
               </div>
 
               <input
@@ -191,7 +205,9 @@ class LoginView extends React.Component {
               }
               <div className={this.props.login_failed ? 'input-group login-failed-border' : 'input-group'}>
                 <div className="input-group-prepend">
-                  <span className="input-group-text"><i className="fa fa-user"></i></span>
+                  <span className="input-group-text"><FontAwesomeIcon
+                    icon={faUser}
+                  /></span>
                 </div>
 
                 <input
@@ -207,7 +223,9 @@ class LoginView extends React.Component {
 
               <div className={this.props.login_failed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
                 <div className="input-group-prepend">
-                  <span className="input-group-text"><i className="fa fa-lock"></i></span>
+                  <span className="input-group-text"><FontAwesomeIcon
+                    icon={faLock}
+                  /></span>
                 </div>
                 <input
                   className="form-control"

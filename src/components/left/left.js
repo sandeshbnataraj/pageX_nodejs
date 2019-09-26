@@ -76,7 +76,9 @@ export default class Left extends Component {
                         src={this.state.avatarView}
                         className="left__avatar"
                       />
-                      <div className="img-content"></div>
+                      {this.props.currentUserState === 1 && (
+                        <div className="img-content"></div>
+                      )}
                     </div>
                   </label>
                   <input
@@ -113,7 +115,7 @@ export default class Left extends Component {
                   this.setState({ enlargeImage: true });
                 }}
                 src={this.state.avatarView}
-                className="left__avatarhome limitHeight"
+                className="left__avatarhome limitHeight ml-5"
               />
             )}
             {this.state.enlargeImage && (
