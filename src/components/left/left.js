@@ -61,12 +61,12 @@ export default class Left extends Component {
   }
   render() {
     const user = this.props.user ? this.props.user[0] : null;
-
-    const bg = this.props.from === "profile" ? "bg-lit p-3" : "";
+    const shadow = this.props.from === "profile" ? "shadow  mb-5 p-3" : "";
+    const bg = this.props.from === "profile" ? "bg-lit " : "";
     return (
       <React.Fragment>
         {user && (
-          <div className={`left shadow  mb-5 ${bg}`}>
+          <div className={`left ${shadow} ${bg}`}>
             {this.props.from === "profile" ? (
               <React.Fragment>
                 <div>
@@ -115,7 +115,7 @@ export default class Left extends Component {
                   this.setState({ enlargeImage: true });
                 }}
                 src={this.state.avatarView}
-                className="left__avatarhome limitHeight ml-5"
+                className="left__avatarhome "
               />
             )}
             {this.state.enlargeImage && (
