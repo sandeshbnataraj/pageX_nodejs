@@ -111,10 +111,10 @@ export default class ProfileView extends React.Component {
                     className={`${coverSize}`}
                     onLoad={this.onChangeImg}
                   />
-                  {this.props.currentUserState === 1 && <div className="cover-pic-img-content"></div>}
+                  {(this.props.currentUserState === 1 || this.props.currentUserState === true) && <div className="cover-pic-img-content"></div>}
                 </div>
               </label>
-              {this.props.currentUserState === 1 &&
+              {(this.props.currentUserState === 1 || this.props.currentUserState === true) &&
                 <input
                   className="d-none"
                   type="file"
