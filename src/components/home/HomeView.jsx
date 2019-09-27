@@ -58,14 +58,14 @@ export default class HomeView extends React.Component {
                           <Col
                             md={3}
                             className="member d-flex flex-row align-items-start "
-                          >
+                          >                            
                             <Link
                               to={{
                                 pathname: "/profile/",
                                 search: queryString.stringify(
                                   Object.assign({}, { user_id: value.id })
                                 ),
-                                state: { currentuser: false }
+                                state: { currentuser: value.currentuser }
                               }}
                             >
                               <figure className="">
@@ -89,7 +89,7 @@ export default class HomeView extends React.Component {
                                     search: queryString.stringify(
                                       Object.assign({}, { user_id: value.id })
                                     ),
-                                    state: { currentuser: false }
+                                    state: { currentuser: value.currentuser }
                                   }}
                                 >
                                   <small className="member-caption">
@@ -109,7 +109,7 @@ export default class HomeView extends React.Component {
                                     search: queryString.stringify(
                                       Object.assign({}, { user_id: value.id })
                                     ),
-                                    state: { currentuser: false }
+                                    state: { currentuser: value.currentuser }
                                   }}
                                 >
                                   {value.email}
