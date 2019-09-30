@@ -64,20 +64,19 @@ export default class Left extends Component {
   }
 
   renderPublication = () => {
-    let userPublicationsArray = [];
-    if (this.props.userPublications) {
-      userPublicationsArray = [...this.props.userPublications.slice(0, 6)];
-    }
-
     return (
       <React.Fragment>
-        <ListGroup variant="flush" className="shadow p-2 mb-5">
-          {userPublicationsArray.map((userPublication, index) => (
+        <ListGroup
+          variant="flush"
+          className="shadow p-2 mb-5"
+          style={{ borderRadius: "1rem" }}
+        >
+          {this.props.userPublications.map((userPublication, index) => (
             <PublicationListItem
               key={index}
               postIndex={index}
               userPublication={userPublication}
-              userPublications={userPublicationsArray}
+              userPublications={this.props.userPublications}
               loadMoreData={this.loadMoreData}
             />
           ))}
