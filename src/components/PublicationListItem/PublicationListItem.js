@@ -130,7 +130,7 @@ class PublicationListItem extends Component {
                   }}
                   style={{ fontSize: "10px", cursor: "pointer" }}
                 >
-                  new post from {this.renderText(userPublication)}
+                  new {this.renderText(userPublication)} post 
                 </span>
               </h6>
             </Col>
