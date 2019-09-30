@@ -125,7 +125,7 @@ export default class Left extends Component {
                 close={() => this.setState({ enlargeImage: false })}
               />
             )}
-            <h3 className="left__username text-center mt-2">
+            <h3 className="left__username text-center mt-2 mr-3">
               {user && user.first_name + " " + user.last_name}
             </h3>
             <p className="left__description text-center">{user && user.bio}</p>
