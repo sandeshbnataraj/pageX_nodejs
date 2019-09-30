@@ -91,8 +91,7 @@ export default class ProfileView extends React.Component {
     const user = this.props.userInfo.user
       ? this.props.userInfo.user[0]
       : undefined;
-    const { coverSize, followed } = this.state;
-
+    const { coverSize, followed } = this.state;    
     return (
       <section style={{ backgroundColor: "#F5FAFE", paddingTop: "1rem" }}>
         <figure>
