@@ -19,11 +19,12 @@ function callUserInfoApi() {
 function* getUserInfo() {
   try {
     const infoResponse = yield call(callUserInfoApi);
-    
+
     //for testing
+
     // const infoResponse = {
     //   data: [{
-    //     "user": [{ "id": 1, "first_name": "Evin", "last_name": "Luiz", "email": "evin@eycon.com", "phone": "619-394-1367", "last_login": null, "school": "San Diego State Univrsity", "location": "San Diego", "profession": "Artist", "updated_at": "2019-09-26T01:07:28.317Z", "dob": null, "currentuser": 1, "bio": "Artist living in san diego", "followed": 0, "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75cb1a617ba6d59b9c9bf5499246eb6f84cc6b01/FakeDP.jpeg", "coverpic": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--100619f119c33a6eb5965c1ad8690cdf7ef17ff5/images%20(1).jfif" }]
+    //     "id": 1, "first_name": "Evin", "last_name": "Luiz", "email": "evin@eycon.com", "phone": "619-394-1367", "last_login": null, "school": "San Diego State Univrsity", "location": "San Diego", "profession": "Artist", "updated_at": "2019-09-26T01:07:28.317Z", "dob": null, "currentuser": 1, "bio": "Artist living in san diego", "followed": 0, "avatar": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--75cb1a617ba6d59b9c9bf5499246eb6f84cc6b01/FakeDP.jpeg", "coverpic": "/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBOZz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--100619f119c33a6eb5965c1ad8690cdf7ef17ff5/images%20(1).jfif"
     //   }]
     // };
 
