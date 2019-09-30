@@ -16,6 +16,8 @@
     border: 3px solid white;
     box-shadow: 1px 1px #f2f2f2;
     border-radius: $border-radius;
+    max-width: 120px !important;
+    height: auto !important;
   }
   &__username {
     @extend %h2;
@@ -28,7 +30,6 @@
     @extend %p;
     color: $c-darkest;
     margin-bottom: 1rem;
-    font-size: 0.8rem !important;
   }
 }
 .btn-container {
@@ -70,7 +71,9 @@
 
   &__icon {
     width: 1.5rem;
+    margin-right: 0.5rem;
     margin-top: 0.5rem;
+
     display: inline-block;
   }
 }
@@ -139,4 +142,7 @@ cover-btn {
 }
 .bg-lit {
   background: #f5fafe;
+}
+.f10px {
+  font-size: 10px !important;
 }

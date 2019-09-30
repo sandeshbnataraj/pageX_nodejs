@@ -25,7 +25,11 @@ export default class HomeView extends React.Component {
         <Container className="content">
           <Row>
             <Col md={2} className="mr-2r">
-              <Left from="home" user={this.props.userInfo.user} />
+              <Left
+                from="home"
+                user={this.props.userInfo.user}
+                userPublications={this.props.userPublications}
+              />
             </Col>
             <Col md={6}>
               <Publication publicationType="update" />
@@ -59,16 +63,26 @@ export default class HomeView extends React.Component {
                             md={3}
                             className="member d-flex flex-row align-items-start "
                           >
-                            <figure className="">
-                              <Image
-                                src={
-                                  value.avatar
-                                    ? value.avatar
-                                    : "https://via.placeholder.com/150"
-                                }
-                                className="member-img"
-                              />
-                            </figure>
+                            <Link
+                              to={{
+                                pathname: "/profile/",
+                                search: queryString.stringify(
+                                  Object.assign({}, { user_id: value.id })
+                                ),
+                                state: { currentuser: value.currentuser }
+                              }}
+                            >
+                              <figure className="">
+                                <Image
+                                  src={
+                                    value.avatar
+                                      ? value.avatar
+                                      : "https://via.placeholder.com/150"
+                                  }
+                                  className="member-img"
+                                />
+                              </figure>
+                            </Link>
                           </Col>
                           <Col md={9} className="row-mem">
                             <div>
@@ -79,7 +93,7 @@ export default class HomeView extends React.Component {
                                     search: queryString.stringify(
                                       Object.assign({}, { user_id: value.id })
                                     ),
-                                    state: { currentuser: false }
+                                    state: { currentuser: value.currentuser }
                                   }}
                                 >
                                   <small className="member-caption">
@@ -93,7 +107,17 @@ export default class HomeView extends React.Component {
                                   icon={faEnvelope}
                                   className="mr-1"
                                 />
-                                {value.email}
+                                <Link
+                                  to={{
+                                    pathname: "/profile/",
+                                    search: queryString.stringify(
+                                      Object.assign({}, { user_id: value.id })
+                                    ),
+                                    state: { currentuser: value.currentuser }
+                                  }}
+                                >
+                                  {value.email}
+                                </Link>
                               </p>
                             </div>
                             <div className="cover-pic-img-content"></div>

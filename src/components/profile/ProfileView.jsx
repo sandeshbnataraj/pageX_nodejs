@@ -91,8 +91,7 @@ export default class ProfileView extends React.Component {
     const user = this.props.userInfo.user
       ? this.props.userInfo.user[0]
       : undefined;
-    const { coverSize, followed } = this.state;
-
+    const { coverSize, followed } = this.state;    
     return (
       <section style={{ backgroundColor: "#F5FAFE", paddingTop: "1rem" }}>
         <figure>
@@ -111,10 +110,10 @@ export default class ProfileView extends React.Component {
                     className={`${coverSize}`}
                     onLoad={this.onChangeImg}
                   />
-                  {this.state.currentUserState === 1 && <div className="cover-pic-img-content"></div>}
+                  {(this.props.currentUserState === 1 || this.props.currentUserState === true) && <div className="cover-pic-img-content"></div>}
                 </div>
               </label>
-              {this.state.currentUserState === 1 &&
+              {(this.props.currentUserState === 1 || this.props.currentUserState === true) &&
                 <input
                   className="d-none"
                   type="file"

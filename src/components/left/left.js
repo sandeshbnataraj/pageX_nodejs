@@ -4,11 +4,14 @@ import {
   faMapMarkerAlt
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { Button, Image } from "react-bootstrap";
+import { Button, Image, Alert, Spinner } from "react-bootstrap";
 import { BASE_URL } from "../../app.constants";
 import isEqual from "lodash/isEqual";
 import ProfilePic from "./profilePic";
+import ListGroup from "react-bootstrap/ListGroup";
+
 import "./left.scss";
+import PublicationListItem from "../PublicationListItem/PublicationListItem";
 
 export default class Left extends Component {
   constructor(props) {
@@ -59,15 +62,38 @@ export default class Left extends Component {
     this.setState({ avatarChanged: false });
     this.props.editProfile({ avatar: this.state.avatar });
   }
+
+  renderPublication = () => {
+    return (
+      <React.Fragment>
+        <ListGroup variant="flush">
+          {this.props.userPublications.map((userPublication, index) => (
+            <PublicationListItem
+              key={index}
+              postIndex={index}
+              userPublication={userPublication}
+              userPublications={this.props.userPublications}
+              loadMoreData={this.loadMoreData}
+            />
+          ))}
+        </ListGroup>
+        {this.props.loading && (
+          <div className="mt-3 font-weight-bold">
+            <Alert variant="light">
+              <Spinner animation="grow" size="sm" /> Loading...
+            </Alert>
+          </div>
+        )}
+      </React.Fragment>
+    );
+  };
   render() {
     const user = this.props.user ? this.props.user[0] : null;
-
-    const shadow = this.props.from === "profile" ? "shadow p-3 mb-5" : "";
     const bg = this.props.from === "profile" ? "bg-lit" : "";
     return (
       <React.Fragment>
         {user && (
-          <div className={`left ${shadow}  ${bg}`}>
+          <div className={"left shadow p-2 mb-5 " + bg}>
             {this.props.from === "profile" ? (
               <React.Fragment>
                 <div>
@@ -82,13 +108,15 @@ export default class Left extends Component {
                       )}
                     </div>
                   </label>
-                  <input
-                    className="d-none"
-                    type="file"
-                    id="profile-pic"
-                    name="profile-pic"
-                    onChange={this.onFileUploadAvatar}
-                  />
+                  {this.props.currentUserState === 1 && (
+                    <input
+                      className="d-none"
+                      type="file"
+                      id="profile-pic"
+                      name="profile-pic"
+                      onChange={this.onFileUploadAvatar}
+                    />
+                  )}
                   {this.state.avatarChanged && (
                     <div className="d-flex btn-container justify-content-center mb-2">
                       <Button
@@ -116,7 +144,7 @@ export default class Left extends Component {
                   this.setState({ enlargeImage: true });
                 }}
                 src={this.state.avatarView}
-                className="left__avatarhome"
+                className="left__avatarhome m-auto"
               />
             )}
             {this.state.enlargeImage && (
@@ -125,27 +153,33 @@ export default class Left extends Component {
                 close={() => this.setState({ enlargeImage: false })}
               />
             )}
-            <h3 className="left__username text-center mt-2 mr-3">
+            <h3 className="left__username text-center mt-2">
               {user && user.first_name + " " + user.last_name}
             </h3>
             <p className="left__description text-center">{user && user.bio}</p>
             <div className="left-meta">
-              <figure className="left-meta__icon">
+              <figure className="left-meta__icon m-0 p-0">
                 <FontAwesomeIcon
                   icon={faGraduationCap}
                   className="left-meta__fa"
                 />
               </figure>
-              <span className="smaller-text"> {user && user.school}</span>
+              <span className="smaller-text mt-1 f10px">
+                {" "}
+                {user && user.school}
+              </span>
             </div>
             <div className="left-meta">
-              <figure className="left-meta__icon">
+              <figure className="left-meta__icon m-0 p-0 mt-1">
                 <FontAwesomeIcon
                   icon={faMapMarkerAlt}
                   className="left-meta__fa"
                 />
               </figure>
-              <span className="smaller-text"> {user && user.location} </span>
+              <span className="smaller-text mt-1 f10px">
+                {" "}
+                {user && user.location}{" "}
+              </span>
             </div>
             <section className="people-wrapper">
               <div className="people">
@@ -200,6 +234,7 @@ export default class Left extends Component {
             </section>
           </div>
         )}
+        {this.props.from === "home" ? this.renderPublication() : ""}
       </React.Fragment>
     );
   }
