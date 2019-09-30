@@ -108,6 +108,7 @@ export default class Left extends Component {
                       )}
                     </div>
                   </label>
+
                   {this.props.currentUserState === 1 && (
                     <input
                       className="d-none"
@@ -117,6 +118,7 @@ export default class Left extends Component {
                       onChange={this.onFileUploadAvatar}
                     />
                   )}
+
                   {this.state.avatarChanged && (
                     <div className="d-flex btn-container justify-content-center mb-2">
                       <Button
@@ -164,10 +166,12 @@ export default class Left extends Component {
                   className="left-meta__fa"
                 />
               </figure>
+
               <span className="smaller-text mt-1 f10px">
                 {" "}
                 {user && user.school}
               </span>
+
             </div>
             <div className="left-meta">
               <figure className="left-meta__icon m-0 p-0 mt-1">
@@ -176,10 +180,12 @@ export default class Left extends Component {
                   className="left-meta__fa"
                 />
               </figure>
+
               <span className="smaller-text mt-1 f10px">
                 {" "}
                 {user && user.location}{" "}
               </span>
+
             </div>
             <section className="people-wrapper">
               <div className="people">
