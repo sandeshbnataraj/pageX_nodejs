@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import Popup from "../../components/popup/popup";
-import { ListGroupItem } from "react-bootstrap";
+import { ListGroupItem, Row, Col } from "react-bootstrap";
 import { likePost, promotePost } from "../../actions/userPublicationAction";
+import "./PublicationListItem.scss";
 class PublicationListItem extends Component {
   constructor(props) {
     super(props);
@@ -69,9 +70,30 @@ class PublicationListItem extends Component {
       }
     );
   };
-
+  renderText = userPublication => {
+    if (
+      userPublication.publication_text !== "" &&
+      userPublication.publication_img === "0" &&
+      userPublication.publication_vid === "0"
+    ) {
+      return "text";
+    } else if (
+      userPublication.publication_img !== "0" &&
+      userPublication.publication_text === "" &&
+      userPublication.publication_vid === "0"
+    ) {
+      return "image";
+    } else if (
+      userPublication.publication_img === "" &&
+      userPublication.publication_text === "0" &&
+      userPublication.publication_vid !== "0"
+    ) {
+      return "video";
+    }
+  };
   render() {
     const { index, userPublication, userPublications } = this.props;
+
     return (
       <div>
         <Popup
@@ -90,23 +112,29 @@ class PublicationListItem extends Component {
         />
         <ListGroupItem
           key={index}
-          style={{ padding: "0.75rem 1rem", background: "#F5FAFE" }}
+          style={{ background: "#F5FAFE", padding: ".75rem" }}
         >
-          <p>{userPublication.first_name + " " + userPublication.last_name} </p>
-          <h6>
-            <span
-              className="text-info font-italic"
-              onClick={() => {
-                this.showPopup();
-              }}
-              style={{ fontSize: "12px", cursor: "pointer" }}
-            >
-              new post from
-              <small style={{ fontSize: "15px", color: "black" }}>
-                {" " + userPublication.first_name}
-              </small>
-            </span>
-          </h6>
+          <Row>
+            <Col md={4} className=" p-0">
+              <img src={userPublication.avatar} alt="" />
+            </Col>
+            <Col md={8} className="p-0">
+              <p className="ml-1">
+                {userPublication.first_name + " " + userPublication.last_name}{" "}
+              </p>
+              <h6>
+                <span
+                  className="text-info font-italic ml-1"
+                  onClick={() => {
+                    this.showPopup();
+                  }}
+                  style={{ fontSize: "10px", cursor: "pointer" }}
+                >
+                  new post from {this.renderText(userPublication)}
+                </span>
+              </h6>
+            </Col>
+          </Row>
         </ListGroupItem>
       </div>
     );

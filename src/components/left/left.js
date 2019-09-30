@@ -66,7 +66,11 @@ export default class Left extends Component {
   renderPublication = () => {
     return (
       <React.Fragment>
-        <ListGroup variant="flush" className="shadow p-2 mb-5">
+        <ListGroup
+          variant="flush"
+          className="shadow p-2 mb-5"
+          style={{ borderRadius: "1rem" }}
+        >
           {this.props.userPublications.map((userPublication, index) => (
             <PublicationListItem
               key={index}
