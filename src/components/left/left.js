@@ -67,7 +67,7 @@ export default class Left extends Component {
     return (
       <React.Fragment>
         {user && (
-          <div className={`left ${shadow}  ${bg}`}>
+          <div className={"left shadow  mb-5 " + bg}>
             {this.props.from === "profile" ? (
               <React.Fragment>
                 <div>
@@ -82,7 +82,7 @@ export default class Left extends Component {
                       )}
                     </div>
                   </label>
-                  {this.props.currentUserState === 1 &&  <input
+                  {this.props.currentUserState === 1 && <input
                     className="d-none"
                     type="file"
                     id="profile-pic"
