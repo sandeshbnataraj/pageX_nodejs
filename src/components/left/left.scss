@@ -16,7 +16,6 @@
     border: 3px solid white;
     box-shadow: 1px 1px #f2f2f2;
     border-radius: $border-radius;
-    margin-left: -18px;
   }
   &__username {
     @extend %h2;
