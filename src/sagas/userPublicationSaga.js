@@ -64,7 +64,7 @@ function* postPublication(action) {
       Object.keys(params).forEach(param => post.append(param, params[param]));
     }
 
-    // yield axios.post("/api/publish", post);
+    yield axios.post("/api/publish", post);
     yield put(postedPublication());
     yield put(clearUserPublication());
     yield put(getUserPublications());
@@ -78,7 +78,6 @@ function* postPublication(action) {
 
 function* getUserPublicationsWorker(action) {
   try {
-
     yield put({ type: FETCHING_USER_PUBLICATIONS });
     const pubResponse = yield axios.get("/api/userpublications", {
       params: action.query
@@ -109,7 +108,6 @@ function* getUserPublicationsWorker(action) {
 
 function* getLikedUsers(action) {
   try {
-
     yield put({ type: FETCHING_LIKED_USERS });
     const pubResponse = yield axios.get("/api/likedby/" + action.id, {
       params: action.query
@@ -129,7 +127,6 @@ function* getLikedUsers(action) {
 }
 function* getPromotedUsers(action) {
   try {
-
     yield put({ type: FETCHING_PROMOTED_USERS });
     const pubResponse = yield axios.get("/api/promotedby/" + action.id, {
       params: action.query

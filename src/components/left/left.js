@@ -66,7 +66,7 @@ export default class Left extends Component {
   renderPublication = () => {
     return (
       <React.Fragment>
-        <ListGroup variant="flush">
+        <ListGroup variant="flush" className="shadow p-2 mb-5">
           {this.props.userPublications.map((userPublication, index) => (
             <PublicationListItem
               key={index}
@@ -171,7 +171,6 @@ export default class Left extends Component {
                 {" "}
                 {user && user.school}
               </span>
-
             </div>
             <div className="left-meta">
               <figure className="left-meta__icon m-0 p-0 mt-1">
@@ -185,7 +184,6 @@ export default class Left extends Component {
                 {" "}
                 {user && user.location}{" "}
               </span>
-
             </div>
             <section className="people-wrapper">
               <div className="people">

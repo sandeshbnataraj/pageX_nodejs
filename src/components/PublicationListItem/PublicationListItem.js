@@ -88,7 +88,10 @@ class PublicationListItem extends Component {
           isPromoted={this.state.isPromoted}
           formatCount={this.formatCount}
         />
-        <ListGroupItem key={index} style={{ padding: "0.75rem 1rem" }}>
+        <ListGroupItem
+          key={index}
+          style={{ padding: "0.75rem 1rem", background: "#F5FAFE" }}
+        >
           <p>{userPublication.first_name + " " + userPublication.last_name} </p>
           <h6>
             <span
@@ -98,7 +101,7 @@ class PublicationListItem extends Component {
               }}
               style={{ fontSize: "12px", cursor: "pointer" }}
             >
-              new post by
+              new post from
               <small style={{ fontSize: "15px", color: "black" }}>
                 {" " + userPublication.first_name}
               </small>
