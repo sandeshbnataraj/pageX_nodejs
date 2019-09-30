@@ -236,7 +236,7 @@ class Publication extends Component {
             onUpload={this.onUpload}
             onRemove={this.onRemove}
           />
-          {this.workTypeDropdown}
+
           {dropDown}
           {this.accessTypeDropdown}
           {this.publishUpdateButton}

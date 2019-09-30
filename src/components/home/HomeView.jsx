@@ -25,7 +25,11 @@ export default class HomeView extends React.Component {
         <Container className="content">
           <Row>
             <Col md={2} className="mr-2r">
-              <Left from="home" user={this.props.userInfo.user} />
+              <Left
+                from="home"
+                user={this.props.userInfo.user}
+                userPublications={this.props.userPublications}
+              />
             </Col>
             <Col md={6}>
               <Publication publicationType="update" />
@@ -58,7 +62,7 @@ export default class HomeView extends React.Component {
                           <Col
                             md={3}
                             className="member d-flex flex-row align-items-start "
-                          >                            
+
                             <Link
                               to={{
                                 pathname: "/profile/",
