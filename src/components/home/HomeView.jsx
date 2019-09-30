@@ -62,7 +62,7 @@ export default class HomeView extends React.Component {
                           <Col
                             md={3}
                             className="member d-flex flex-row align-items-start "
-
+                          >
                             <Link
                               to={{
                                 pathname: "/profile/",
