@@ -113,13 +113,11 @@ class PublicationListItem extends Component {
         <ListGroupItem
           key={index}
           style={{ background: "#F5FAFE", padding: ".75rem" }}
+          className="m-0 p-0 pl-3"
         >
           <Row>
-            <Col md={4} className=" p-0">
-              <img src={userPublication.avatar} alt="" />
-            </Col>
-            <Col md={8} className="p-0">
-              <p className="ml-1">
+            <Col md={12} className="p-0">
+              <p className="ml-1" style={{ fontSize: "0.9rem", lineHeight: "1" }}>
                 {userPublication.first_name + " " + userPublication.last_name}{" "}
               </p>
               <h6>
@@ -130,7 +128,7 @@ class PublicationListItem extends Component {
                   }}
                   style={{ fontSize: "10px", cursor: "pointer" }}
                 >
-                  new {this.renderText(userPublication)} post 
+                  new {this.renderText(userPublication)} post
                 </span>
               </h6>
             </Col>
