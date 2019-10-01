@@ -75,223 +75,182 @@ class LoginView extends React.Component {
 
   render() {
     return (
-      <div
-        id='container'
-        className={
-          //click triggered showing the right panel active
-          //else it shows the container
-          this.props.signUpCondition
-            ? 'slide-design-container slide-design-right-panel-active slide-design-sign-up-container'
-            : 'slide-design-container'
-        }
-      >
-        {this.props.signUpCondition ? <div className='slide-design-form-container slide-design-sign-up-container'>
-          <form className='slide-design-form signupArea' action='#'>
-            <h1 className='slide-design-header mb-5'>Create Account</h1>
-            {
-              this.props.message
-              && (
-                <span className='slide-design-a' style={{ color: 'red' }}>{this.props.message}</span>
-              )
-            }
-
-            <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
-              <div className="input-group-prepend">
-                <span className="input-group-text"> <FontAwesomeIcon
-                  icon={faAddressBook}
-                /></span>
-              </div>
-
-              <input
-                name='first_name'
-                className="form-control"
-                type='text'
-                placeholder='Full name'
-                onChange={this.handleChange}
-              />
-            </div>
-            {this.state.isSignUpFullNameEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
-
-              <i className="fa fa-warning"></i > Full name is required</div>}
-
-            <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
-              <div className="input-group-prepend">
-                <span className="input-group-text"><FontAwesomeIcon
-                  icon={faEnvelope}
-                /></span>
-              </div>
-
-              <input
-                name='email'
-                className={this.props.signUpFailed ? 'form-control login-failed-border' : 'form-control'}
-                type='email'
-                placeholder='Email'
-                onChange={this.handleChange}
-              />
-            </div>
-
-            {this.state.isSignUpEmailEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
-              <i className="fa fa-warning"></i > Email is required</div>}
-            {this.state.isSignUpEmailInValid && !this.state.isSignUpEmailEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
-              <i className="fa fa-warning"></i > Email is invalid</div>}
-
-
-            <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
-              <div className="input-group-prepend">
-                <span className="input-group-text"><FontAwesomeIcon
-                  icon={faLock}
-                /></span>
-              </div>
-
-              <input
-                name='password'
-                className="form-control"
-                type='password'
-                placeholder='Password'
-                onChange={this.handleChange}
-              />
-            </div>
-            {this.state.isSignUpPaswordEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
-              <i className="fa fa-warning"></i > Password is required</div>}
-
-            <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
-              <div className="input-group-prepend">
-                <span className="input-group-text"><FontAwesomeIcon
-                  icon={faPhone}
-                /></span>
-              </div>
-
-              <input
-                name='phone'
-                className="form-control"
-                type="text"
-                placeholder="Phone"
-                onChange={this.handleChange}
-              />
-            </div>
-            {this.state.isSignUpPhoneEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
-              <i className="fa fa-warning"></i > Phone is required</div>}
-
-
-            <button
-              className='btn btn-block btn-lg btn-primary mt-2 btnLogin'
-              onClick={(e) => { e.preventDefault(); this.validateSignUpFormAndSubmit() }}
-            >
-              Sign up
-                </button>
-
-            {this.props.signUpFailed && <div className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Sign up error! Try again</div>}
-
-            <p className="mt-5">Already have an account? </p>
-            <button
-              className='btnSignUpNow mt-2'
-              onClick={(e) => { e.preventDefault(); this.props.handleSignUpCondition() }}
-            >
-              Login now!
-                  </button>
-          </form>
-        </div> :
-          <div className='slide-design-form-container slide-design-sign-in-container'>
-            <form className='slide-design-form loginArea'>
-
+      <div className="container-fluid loginContainer mt-5">
+        <div>
+          {this.props.signUpCondition ? <div className='w-100'>
+            <form className='col-12 col-xl-4 col-lg-6 col-md-8 col-sm-10 signupArea offset-xl-4 offset-lg-3 offset-md-2 offset-sm-1'>
+              <h1 className='slide-design-header mb-5 text-center'>Create Account</h1>
               {
                 this.props.message
-                  ? (
-                    <h1 className='slide-design-header mb-5'>{this.props.message}</h1>
-                  )
-                  : (
-                    <h1 className='slide-design-header mb-5'>Sign in</h1>
-                  )
+                && (
+                  <span className='slide-design-a' style={{ color: 'red' }}>{this.props.message}</span>
+                )
               }
-              <div className={this.props.login_failed ? 'input-group login-failed-border' : 'input-group'}>
+
+              <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
                 <div className="input-group-prepend">
-                  <span className="input-group-text"><FontAwesomeIcon
-                    icon={faUser}
+                  <span className="input-group-text"> <FontAwesomeIcon
+                    icon={faAddressBook}
                   /></span>
                 </div>
 
                 <input
+                  name='first_name'
                   className="form-control"
-                  name='email'
-                  type='email'
-                  id='email'
-                  placeholder='Username'
+                  type='text'
+                  placeholder='Full name'
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.isLoginUserNameEmpty && <div className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Username is required</div>}
+              {this.state.isSignUpFullNameEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
 
-              <div className={this.props.login_failed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
+                <i className="fa fa-warning"></i > Full name is required</div>}
+
+              <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
+                <div className="input-group-prepend">
+                  <span className="input-group-text"><FontAwesomeIcon
+                    icon={faEnvelope}
+                  /></span>
+                </div>
+
+                <input
+                  name='email'
+                  className={this.props.signUpFailed ? 'form-control login-failed-border' : 'form-control'}
+                  type='email'
+                  placeholder='Email'
+                  onChange={this.handleChange}
+                />
+              </div>
+
+              {this.state.isSignUpEmailEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
+                <i className="fa fa-warning"></i > Email is required</div>}
+              {this.state.isSignUpEmailInValid && !this.state.isSignUpEmailEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
+                <i className="fa fa-warning"></i > Email is invalid</div>}
+
+
+              <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
                 <div className="input-group-prepend">
                   <span className="input-group-text"><FontAwesomeIcon
                     icon={faLock}
                   /></span>
                 </div>
+
                 <input
-                  className="form-control"
                   name='password'
+                  className="form-control"
                   type='password'
-                  id='password'
                   placeholder='Password'
                   onChange={this.handleChange}
                 />
               </div>
-              {this.state.isLoginPasswordEmpty && <div className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Password is required</div>}
+              {this.state.isSignUpPaswordEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
+                <i className="fa fa-warning"></i > Password is required</div>}
+
+              <div className={this.props.signUpFailed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
+                <div className="input-group-prepend">
+                  <span className="input-group-text"><FontAwesomeIcon
+                    icon={faPhone}
+                  /></span>
+                </div>
+
+                <input
+                  name='phone'
+                  className="form-control"
+                  type="text"
+                  placeholder="Phone"
+                  onChange={this.handleChange}
+                />
+              </div>
+              {this.state.isSignUpPhoneEmpty && <div className="alert text-danger w-100 text-left m-0 p-0">
+                <i className="fa fa-warning"></i > Phone is required</div>}
+
 
               <button
-                className='btn btn-block btn-lg btn-primary mt-3 btnLogin'
-                onClick={(e) => { e.preventDefault(); this.validateLoginFormAndSubmit() }}
+                className='btn btn-block btn-lg btn-primary mt-2 btnLogin'
+                onClick={(e) => { e.preventDefault(); this.validateSignUpFormAndSubmit() }}
               >
-                Login
+                Sign up
                 </button>
 
-              {this.props.login_failed && <span className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Invalid credentials</span>}
-              <a className='mt-2 forgotPassword' href='#'>Forgot your password?</a>
-              <p className="mt-5">Don't have an account? </p>
+              {this.props.signUpFailed && <div className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Sign up error! Try again</div>}
+
+              <p className="mt-5 text-center">Already have an account? </p>
               <button
-                className='btnSignUpNow mt-2'
+                className='btnSignUpNow mt-2 btn-block'
                 onClick={(e) => { e.preventDefault(); this.props.handleSignUpCondition() }}
               >
-                Sign up now!
+                Login now!
                   </button>
             </form>
-          </div>}
-        <div className='slide-design-overlay-container'>
-          <div className='slide-design-overlay'>
-            <div className='slide-design-overlay-panel slide-design-overlay-left'>
-              {/* <h1 className='slide-design-white slide-design-right slide-design-header'>
-                Welcome Back!
-                  </h1>
-              <p className='slide-design-right slide-design-p'>
-                To keep connected with us please login with your personal info
-                  </p>
-              <button
-                id='signIn'
-                className='slide-design-button slide-design-button-ghost slide-design-right'
-                onClick={this.props.handleSignUpCondition}
-              >
-                Sign In
-                  </button> */}
-            </div>
-            <div className='slide-design-overlay-panel slide-design-overlay-right'>
-              {/* <h1 className='slide-design-header slide-design-white slide-design-move'>
-                Hello, Friend!
-                  </h1>
-              <p className='slide-design-move slide-design-p'>
-                Enter your personal details and start journey with us
-                  </p>
+          </div> :
+            <div className='w-100'>
+              <form className='col-12 col-xl-4 col-lg-6 col-md-8 col-sm-10 loginArea offset-xl-4 offset-lg-3 offset-md-2 offset-sm-1'>
 
-              <button
-                className='slide-design-button slide-design-button-ghost slide-design-move'
-                id='signUp'
-                onClick={this.props.handleSignUpCondition}
-              >
-                Sign Up
-                  </button> */}
-            </div>
-          </div>
+                {
+                  this.props.message
+                    ? (
+                      <h1 className='slide-design-header mb-5'>{this.props.message}</h1>
+                    )
+                    : (
+                      <h1 className='slide-design-header mb-5 text-center'>Sign in</h1>
+                    )
+                }
+                <div className={this.props.login_failed ? 'input-group login-failed-border' : 'input-group'}>
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon
+                      icon={faUser}
+                    /></span>
+                  </div>
+
+                  <input
+                    className="form-control"
+                    name='email'
+                    type='email'
+                    id='email'
+                    placeholder='Username'
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.isLoginUserNameEmpty && <div className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Username is required</div>}
+
+                <div className={this.props.login_failed ? 'input-group login-failed-border mt-3' : 'input-group mt-3'}>
+                  <div className="input-group-prepend">
+                    <span className="input-group-text"><FontAwesomeIcon
+                      icon={faLock}
+                    /></span>
+                  </div>
+                  <input
+                    className="form-control"
+                    name='password'
+                    type='password'
+                    id='password'
+                    placeholder='Password'
+                    onChange={this.handleChange}
+                  />
+                </div>
+                {this.state.isLoginPasswordEmpty && <div className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Password is required</div>}
+
+                <button
+                  className='btn btn-block btn-lg btn-primary mt-3 btnLogin'
+                  onClick={(e) => { e.preventDefault(); this.validateLoginFormAndSubmit() }}
+                >
+                  Login
+                </button>
+
+                {this.props.login_failed && <span className="alert text-danger w-100 text-left m-0 p-0"><i className="fa fa-warning"></i > Invalid credentials</span>}
+                <a className='mt-2 forgotPassword' href='#'>Forgot your password?</a>
+                <p className="mt-4 text-center">Don't have an account? </p>
+                <button
+                  className='btnSignUpNow mt-2 btn-block'
+                  onClick={(e) => { e.preventDefault(); this.props.handleSignUpCondition() }}
+                >
+                  Sign up now!
+                  </button>
+              </form>
+            </div>}
         </div>
       </div>
+
     );
   }
 }
