@@ -84,7 +84,7 @@ export default class HomeView extends React.Component {
                               </figure>
                             </Link>
                           </Col>
-                          <Col md={9} className="row-mem">
+                          <Col md={9} className="row-mem p-0">
                             <div>
                               <h6 className="member__username">
                                 <Link
@@ -102,7 +102,7 @@ export default class HomeView extends React.Component {
                                 </Link>
                               </h6>
 
-                              <p className="member-caption">
+                              <p className="member-caption member-email">
                                 <FontAwesomeIcon
                                   icon={faEnvelope}
                                   className="mr-1"
