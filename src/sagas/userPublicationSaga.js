@@ -79,7 +79,7 @@ function* postPublication(action) {
 function* getUserPublicationsWorker(action) {
   try {
     yield put({ type: FETCHING_USER_PUBLICATIONS });
-    const pubResponse = yield axios.get("/api/userpublications", {
+    const pubResponse = yield axios.get("/api/userspublications", {
       params: action.query
     });
 

@@ -87,29 +87,30 @@
   font-weight: 600;
   margin-left: 5px;
   font-size: 12px;
-  cursor: pointer;
 }
 .member-caption i {
   margin-right: 5px;
 }
 
-.cover-pic-img-content {
-  padding: 10px !important;
-  background: transparent;
-  position: absolute;
-  width: 100%;
-  box-sizing: border-box;
-  transition: all 0.2s ease-in-out;
-  -webkit-transition: all 0.2s ease-in-out;
-  -moz-transition: all 0.2s ease-in-out;
+.row-mem:hover .member-email a,
+.row-mem:hover .member-email svg {
+  color: #4b6584;
 }
-.row-mem:hover {
-  background: #4b6584;
-}
+
 .row-mem:hover .member-caption {
   color: white !important;
 }
 
+.row-mem:hover .member__username {
+  background: #4b6584;
+}
+
 .mr-2r {
   margin-right: 2rem !important;
+}
+
+.members__container .cover-pic-img-content {
+  transition: none !important;
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
 }
