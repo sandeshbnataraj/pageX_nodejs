@@ -102,12 +102,18 @@
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
 }
-.row-mem:hover {
-  background: #4b6584;
+.row-mem:hover .member-email a,.row-mem:hover .member-email svg {
+  color: #4b6584;
 }
+
 .row-mem:hover .member-caption {
   color: white !important;
 }
+
+.row-mem:hover .member__username {
+  background: #4b6584;
+}
+
 .row-mem:hover .cover-pic-img-content {
   bottom: 24px;
   right: -76px;

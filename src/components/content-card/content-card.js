@@ -4,13 +4,13 @@ import ReactTimeAgo from 'react-time-ago';
 import queryString from 'query-string';
 import isEqual from 'lodash/isEqual';
 import { Link } from 'react-router-dom'
-import { Card, Image, Popover, Overlay ,Dropdown} from 'react-bootstrap';
-import { faEllipsisH, faBolt , faThumbsUp  } from '@fortawesome/free-solid-svg-icons';
+import { Card, Image, Popover, Overlay, Dropdown } from 'react-bootstrap';
+import { faEllipsisH, faBolt, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { BASE_URL } from '../../app.constants';
 import { likePost, promotePost } from '../../actions/userPublicationAction'
-import {unFollowUser } from '../../actions/userInfoActions'
+import { unFollowUser } from '../../actions/userInfoActions'
 
 import PromotedOrLikedUsersContainer from '../UserListModal/PromotedOrLikedUsersContainer'
 import Popup from '../../components/popup/popup';
@@ -183,7 +183,7 @@ export default class ContentCard extends Component {
   }
   unFollow(user_id) {
     let postData = {
-      'user_id':user_id
+      'user_id': user_id
     }
     unFollowUser(postData);
   }
@@ -210,15 +210,15 @@ export default class ContentCard extends Component {
             <div className="d-flex justify-content-between">
               <div>
                 <div className="d-flex">
-                <Link to={{ pathname: '/profile/', search: queryString.stringify(Object.assign({}, { user_id: userPublication.user_id })), state: { currentuser: userPublication.currentuser } }}>
-                  <Image className="content-card__avatar"
-                    src={userPublication && BASE_URL + userPublication.avatar} />
+                  <Link to={{ pathname: '/profile/', search: queryString.stringify(Object.assign({}, { user_id: userPublication.user_id })), state: { currentuser: userPublication.currentuser } }}>
+                    <Image className="content-card__avatar"
+                      src={userPublication && BASE_URL + userPublication.avatar} />
                   </Link>
                   <span className="d-flex flex-column">
-                  <Link to={{ pathname: '/profile/', search: queryString.stringify(Object.assign({}, { user_id: userPublication.user_id })), state: { currentuser: userPublication.currentuser } }}>
-                    <h6
-                      id='username-content' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(userPublication, this.props.postIndex)} className="content-card__username">{userPublication && (userPublication.first_name + ' ' + userPublication.last_name)}</h6>
-                  </Link>
+                    <Link to={{ pathname: '/profile/', search: queryString.stringify(Object.assign({}, { user_id: userPublication.user_id })), state: { currentuser: userPublication.currentuser } }}>
+                      <h6
+                        id='username-content' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(userPublication, this.props.postIndex)} className="content-card__username">{userPublication && (userPublication.first_name + ' ' + userPublication.last_name)}</h6>
+                    </Link>
                     <Overlay
                       show={this.state.showPopOver[this.props.postIndex]}
                       target={this.refList}
@@ -238,20 +238,20 @@ export default class ContentCard extends Component {
               <div className="d-flex justify-content-end text-right right flex-column">
                 <span className="content-card__button">
                   <Dropdown>
-                  <Dropdown.Toggle  as={CustomToggle} id="dropdown-basic">
-                  <FontAwesomeIcon icon={faEllipsisH} className="content-card__icon" />
+                    <Dropdown.Toggle as={CustomToggle} id="dropdown-basic">
+                      <FontAwesomeIcon icon={faEllipsisH} className="content-card__icon" />
                       <Dropdown.Menu >
-                      {((this.state.isPromoted || userPublication.promoted) || (this.state.isLiked || userPublication.liked)) ?
-                        <Dropdown.Item eventKey="1"><span className='count-value like-done '>Promote Piece</span></Dropdown.Item> :
-                        <Dropdown.Item eventKey="1" onClick={() => { this.promotePost(userPublication.id) }}>Promote Piece</Dropdown.Item> 
-                       
+                        {((this.state.isPromoted || userPublication.promoted) || (this.state.isLiked || userPublication.liked)) ?
+                          <Dropdown.Item eventKey="1"><span className='count-value like-done '>Promote Piece</span></Dropdown.Item> :
+                          <Dropdown.Item eventKey="1" onClick={() => { this.promotePost(userPublication.id) }}>Promote Piece</Dropdown.Item>
+
                         }
                         <Dropdown.Item eventKey="2">Add To Collection</Dropdown.Item>
-                        {userPublication.following ===1 ? 
-                        <Dropdown.Item eventKey="3" onClick={() => {this.unFollow(userPublication.user_id)}}>Unfollow</Dropdown.Item>:
-                        <Dropdown.Item eventKey="3"><span className='count-value like-done '>Unfollow</span></Dropdown.Item>}
+                        {userPublication.following === 1 ?
+                          <Dropdown.Item eventKey="3" onClick={() => { this.unFollow(userPublication.user_id) }}>Unfollow</Dropdown.Item> :
+                          <Dropdown.Item eventKey="3"><span className='count-value like-done '>Unfollow</span></Dropdown.Item>}
                       </Dropdown.Menu>
-                  </Dropdown.Toggle>
+                    </Dropdown.Toggle>
                   </Dropdown>
                 </span>
                 <p className="content-card__public">
@@ -278,23 +278,17 @@ export default class ContentCard extends Component {
           <Card.Footer style={{ margin: '0 -1rem', padding: '1rem 1rem 0', borderTopColor: '#f2f2f2' }}>
             <div className='content-card-footer d-flex justify-content-between'>
               <div className='content-card-footer__item'>
-                {((this.state.isLiked || userPublication.liked) || (this.state.isPromoted || userPublication.promoted ) )?
+                {((this.state.isLiked || userPublication.liked) || (this.state.isPromoted || userPublication.promoted)) ?
                   <span><span onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }} className='count-value'>{this.formatCount(this.state.likeCount)}</span> <span className='count-value like-done '>
-                   Comment
+                    Comment
                 </span></span> :
                   <span><span className='count-value' onClick={() => { this.handleOpenUsersList('liked', userPublication.id) }}>{this.formatCount(this.state.likeCount)} </span> <span onClick={() => { this.likePost(userPublication.id) }} className='count-value'>
-                      Comment</span> </span>}
+                    Comment</span> </span>}
               </div>
               <div className='content-card-footer__item'>
                 {((this.state.isPromoted || userPublication.promoted) || (this.state.isLiked || userPublication.liked)) ?
-                  <span><span onClick={() => { this.handleOpenUsersList('promotes', userPublication.id) }} className='count-value'>{this.formatCount(this.state.promoteCount)}</span> <span className='count-value like-done '>Promote <FontAwesomeIcon
-                  icon={faBolt}
-                 
-                /></span></span> :
-                  <span><span onClick={() => { this.handleOpenUsersList('promotes', userPublication.id) }} className='count-value'>{this.formatCount(this.state.promoteCount)}</span><span onClick={() => { this.promotePost(userPublication.id) }} className='count-value'> Promote <FontAwesomeIcon
-                  icon={faBolt}
-                 
-                /></span></span>
+                  <span><span onClick={() => { this.handleOpenUsersList('promotes', userPublication.id) }} className='count-value'>{this.formatCount(this.state.promoteCount)}</span> <span className='count-value like-done '>Promote </span></span> :
+                  <span><span onClick={() => { this.handleOpenUsersList('promotes', userPublication.id) }} className='count-value'>{this.formatCount(this.state.promoteCount)}</span><span onClick={() => { this.promotePost(userPublication.id) }} className='count-value'> Promote </span></span>
                 }
               </div>
             </div>
