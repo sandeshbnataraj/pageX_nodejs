@@ -93,7 +93,7 @@ export default class ProfileView extends React.Component {
       : undefined;
     const { coverSize, followed } = this.state;    
     return (
-      <section style={{ backgroundColor: "#F5FAFE", paddingTop: "1rem" }}>
+      <section style={{ backgroundColor: "white", paddingTop: "1rem" }}>
         <figure>
           <React.Fragment>
             <div>
