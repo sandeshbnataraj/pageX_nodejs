@@ -7,6 +7,7 @@ import { fetchedWorkTypes } from "../actions/workTypeAction";
 function* GetWorkTypes() {
   try {
     const response = yield axios.get(`/api/worktypes`);
+
     //for testing
     //const response = { data: [{ "id": 1, "worktype": "Poem" }, { "id": 2, "worktype": "Lyrics" }, { "id": 3, "worktype": "Essay" }] };
     

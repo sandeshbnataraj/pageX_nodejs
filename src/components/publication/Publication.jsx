@@ -193,9 +193,9 @@ class Publication extends Component {
       if (this.props.from === "modal") {
         sty = "";
         dropDown = (
-          <DropdownButton className="ml-1 flex-grow-1" title="One Piece">
-            <DropdownItem>One Piece</DropdownItem>
-            <DropdownItem>Collection</DropdownItem>
+          <DropdownButton className="ml-1 flex-grow-1" title="Piece">
+            <DropdownItem>Piece</DropdownItem>
+            <DropdownItem>Opinion</DropdownItem>
           </DropdownButton>
         );
       }

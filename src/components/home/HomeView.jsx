@@ -15,7 +15,7 @@ export default class HomeView extends React.Component {
     return (
       <section
         style={{
-          backgroundColor: "#F5FAFE",
+          backgroundColor: "white",
           paddingBottom: "2rem",
           paddingTop: "1rem"
         }}
