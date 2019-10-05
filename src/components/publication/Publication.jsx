@@ -144,6 +144,7 @@ class Publication extends Component {
           className="flex-grow-1 access-type"
           title={this.renderAccessTypeItem(this.state.accessType)}
         >
+          <div class="NavDropDownArrow"></div>
           {this.props.accessTypes.map(accessType => (
             <Dropdown.Item
               key={accessType.id}
@@ -198,6 +199,7 @@ class Publication extends Component {
         sty = "";
         dropDown = (
           <DropdownButton className="ml-1 flex-grow-1" title={this.state.workType ? this.state.workType.worktype : "Please Select"}>
+            <div class="NavDropDownArrow"></div>
             <DropdownItem>Please Select</DropdownItem>
             <DropdownItem onClick={() => {
               this.setState({ works: 0, update: 1, workType: { id: 1, worktype: "Piece" } })
