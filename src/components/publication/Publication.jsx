@@ -20,7 +20,10 @@ const INITIAL_STATE = {
   attachment: null,
   accessType: null,
   workType: null,
-  posting: false
+  posting: false,
+  update: 0,
+  works: 0,
+  subject: "",
 };
 
 class Publication extends Component {
@@ -97,6 +100,7 @@ class Publication extends Component {
       ...this.state,
       publicationType: this.props.publicationType
     });
+    document.getElementsByClassName("close")[0].click()
   };
 
   renderAccessTypeItem = accessType => (
@@ -140,6 +144,7 @@ class Publication extends Component {
           className="flex-grow-1 access-type"
           title={this.renderAccessTypeItem(this.state.accessType)}
         >
+          <div class="NavDropDownArrow"></div>
           {this.props.accessTypes.map(accessType => (
             <Dropdown.Item
               key={accessType.id}
@@ -193,9 +198,15 @@ class Publication extends Component {
       if (this.props.from === "modal") {
         sty = "";
         dropDown = (
-          <DropdownButton className="ml-1 flex-grow-1" title="Piece">
-            <DropdownItem>Piece</DropdownItem>
-            <DropdownItem>Opinion</DropdownItem>
+          <DropdownButton className="ml-1 flex-grow-1" title={this.state.workType ? this.state.workType.worktype : "Please Select"}>
+            <div class="NavDropDownArrow"></div>
+            <DropdownItem>Please Select</DropdownItem>
+            <DropdownItem onClick={() => {
+              this.setState({ works: 0, update: 1, workType: { id: 1, worktype: "Piece" } })
+            }}>Piece</DropdownItem>
+            <DropdownItem onClick={() => {
+              this.setState({ works: 0, update: 1, workType: { id: 2, worktype: "Opinion" } })
+            }}>Opinion</DropdownItem>
           </DropdownButton>
         );
       }
@@ -205,7 +216,8 @@ class Publication extends Component {
       <Form className={`publication-form ${sty} ${className || ""}`}>
         <Card>
           <Card.Body className="publication-form__body">
-            <div className="d-flex">
+            <div className={this.props.publicationType === "work" && this.state.workType
+              && this.state.workType.worktype === "Opinion" ? "" : "d-flex"}>
               <figure className="navbar-avatar">
                 <Link to="/profile">
                   <Image
@@ -216,6 +228,16 @@ class Publication extends Component {
                   />
                 </Link>
               </figure>
+              {this.props.publicationType === "work" && this.state.workType && this.state.workType.worktype === "Opinion" &&
+                <div class="form-group">
+                  <Form.Control
+                    placeholder="Subject"
+                    name="subject"
+                    value={this.state.subject}
+                    onChange={this.onPublicationTextChange}
+                  />
+                </div>}
+
               <div className="publication-form__control">
                 <Form.Control
                   placeholder="Share with the world your latest piece..."

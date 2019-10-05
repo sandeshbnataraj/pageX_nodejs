@@ -261,11 +261,16 @@ export default class ContentCard extends Component {
             </div>
           </Card.Header>
           <Card.Body style={{ padding: '1rem 0' }}>
+            {userPublication && userPublication.publication_subject && (
+              <p className="content-card__text">
+                {userPublication.publication_subject}
+              </p>
+            )}
             {userPublication && userPublication.publication_text && (
               <p className="content-card__text">
                 {userPublication.publication_text}
               </p>
-            )}
+            )}            
             {userPublication && userPublication.publication_img === '1' &&
               <Image className="content-card__image" src={BASE_URL + userPublication.post} onClick={this.showPopup} />
             }
