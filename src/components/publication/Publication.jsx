@@ -21,8 +21,6 @@ const INITIAL_STATE = {
   accessType: null,
   workType: null,
   posting: false,
-  update: 0,
-  works: 0,
   subject: "",
 };
 
@@ -100,7 +98,8 @@ class Publication extends Component {
       ...this.state,
       publicationType: this.props.publicationType
     });
-    document.getElementsByClassName("close")[0].click()
+    if (document.getElementsByClassName("close").length > 0)
+      document.getElementsByClassName("close")[0].click()
   };
 
   renderAccessTypeItem = accessType => (
@@ -141,10 +140,10 @@ class Publication extends Component {
     return (
       this.props.publicationType === "work" && (
         <DropdownButton
-          className="flex-grow-1 access-type"
+          className="flex-grow-1 access-type float-right"
           title={this.renderAccessTypeItem(this.state.accessType)}
         >
-          <div class="NavDropDownArrow"></div>
+          <div className="NavDropDownArrow"></div>
           {this.props.accessTypes.map(accessType => (
             <Dropdown.Item
               key={accessType.id}
@@ -198,14 +197,19 @@ class Publication extends Component {
       if (this.props.from === "modal") {
         sty = "";
         dropDown = (
-          <DropdownButton className="ml-1 flex-grow-1" title={this.state.workType ? this.state.workType.worktype : "Please Select"}>
-            <div class="NavDropDownArrow"></div>
-            <DropdownItem>Please Select</DropdownItem>
+          <DropdownButton id="workType" className="ml-1 flex-grow-1 float-right mr-4" title={this.state.workType ? this.state.workType.worktype : "Please Select"}>
+            <div className="NavDropDownArrow"></div>
             <DropdownItem onClick={() => {
-              this.setState({ works: 0, update: 1, workType: { id: 1, worktype: "Piece" } })
+              this.setState({ workType: null });
+              document.getElementById("workType").click()
+            }}>Please Select</DropdownItem>
+            <DropdownItem onClick={() => {
+              this.setState({ workType: { id: 1, worktype: "Piece" } });
+              document.getElementById("workType").click()
             }}>Piece</DropdownItem>
             <DropdownItem onClick={() => {
-              this.setState({ works: 0, update: 1, workType: { id: 2, worktype: "Opinion" } })
+              this.setState({ workType: { id: 2, worktype: "Opinion" } });
+              document.getElementById("workType").click()
             }}>Opinion</DropdownItem>
           </DropdownButton>
         );
@@ -216,9 +220,8 @@ class Publication extends Component {
       <Form className={`publication-form ${sty} ${className || ""}`}>
         <Card>
           <Card.Body className="publication-form__body">
-            <div className={this.props.publicationType === "work" && this.state.workType
-              && this.state.workType.worktype === "Opinion" ? "" : "d-flex"}>
-              <figure className="navbar-avatar">
+            <div className={this.props.publicationType === "work" ? "" : "d-flex"}>
+              <figure className="navbar-avatar float-left">
                 <Link to="/profile">
                   <Image
                     src={
@@ -228,8 +231,14 @@ class Publication extends Component {
                   />
                 </Link>
               </figure>
+
+
+
+              {dropDown}
+
               {this.props.publicationType === "work" && this.state.workType && this.state.workType.worktype === "Opinion" &&
-                <div class="form-group">
+
+                <div className="form-group">
                   <Form.Control
                     placeholder="Subject"
                     name="subject"
@@ -258,8 +267,6 @@ class Publication extends Component {
             onUpload={this.onUpload}
             onRemove={this.onRemove}
           />
-
-          {dropDown}
           {this.accessTypeDropdown}
           {this.publishUpdateButton}
         </div>

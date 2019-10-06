@@ -55,14 +55,14 @@ function* postPublication(action) {
       publication_vid: isVideo ? "1" : "0",
       publication_doc: isDocument ? "1" : "0",
       publication_text: text,
-      publication_suject: subject,
-      publication_works: works,
-      publication_update: update,
+      publication_subject: subject,
       work_type: workType ? workType.id : null,
       access: accessType ? accessType.id : 1,
-      publication_type: publicationType === "work" ? 2 : 1
+      publication_type: workType ? ((workType.worktype === "Piece" || workType.worktype === "Opinion") ? 1 :
+        (publicationType === "work" ? 2 : 1)) :
+        (publicationType === "work" ? 2 : 1)
     };
-
+    
     let post = params;
     if (params.post) {
       // if there's an attachment - send form-data request
