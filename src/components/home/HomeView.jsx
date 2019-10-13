@@ -15,7 +15,7 @@ export default class HomeView extends React.Component {
     return (
       <section
         style={{
-          backgroundColor: "#F5FAFE",
+          backgroundColor: "white",
           paddingBottom: "2rem",
           paddingTop: "1rem"
         }}
@@ -24,7 +24,7 @@ export default class HomeView extends React.Component {
         {/** TODO: extract styles to scss */}
         <Container className="content">
           <Row>
-            <Col md={2} className="mr-2r">
+            <Col md={3}>
               <Left
                 from="home"
                 user={this.props.userInfo.user}

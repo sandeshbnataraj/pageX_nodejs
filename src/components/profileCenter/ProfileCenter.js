@@ -84,7 +84,7 @@ export default class ProfileCenter extends Component {
           activeKey={this.state.selectedTab}
           onSelect={key => this.setState({ selectedTab: key })}
         >
-          <Tab eventKey="updates" title="Updates" unmountOnExit={true}>
+          <Tab eventKey="updates" title="Publications" unmountOnExit={true}>
             {this.state.updatedPublication.map((userPublication, index) => (
               <ContentCard
                 key={index}

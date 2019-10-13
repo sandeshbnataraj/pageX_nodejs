@@ -248,13 +248,13 @@ class LoginView extends React.Component {
                     placeholder="Username"
                     onChange={this.handleChange}
                   />
+
                 </div>
                 {this.state.isLoginUserNameEmpty && (
                   <div className="alert text-danger w-100 text-left m-0 p-0">
                     <i className="fa fa-warning"></i> Username is required
                   </div>
                 )}
-
                 <div
                   className={
                     this.props.login_failed
@@ -313,8 +313,10 @@ class LoginView extends React.Component {
               </form>
             </div>
           )}
+
         </div>
       </div>
+
     );
   }
 }

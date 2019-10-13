@@ -29,7 +29,7 @@ class SettingsView extends React.Component {
     }
     render() {
         return (
-            <section style={{ backgroundColor: '#f5fafe', paddingTop: '1rem' }} className="content mb-5">
+            <section style={{ backgroundColor: 'white', paddingTop: '1rem' }} className="content mb-5">
                 <Container>
                     <Row>
                         {/* <Col md={3}>

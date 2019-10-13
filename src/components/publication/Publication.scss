@@ -50,14 +50,21 @@
 
   .dropdown {
     button {
-      @extend %dropdown-button;
+      background-color: #4b6584 !important;
+      background: #4b6584 !important;
+      color: white !important;
       margin: 0;
+      width: 140px;
+    }
+    .dropdown-menu.show {
+      border-color: #4b6584 !important;
+      left: -20px !important;
     }
 
     &.access-type {
       button {
         float: right;
-        padding: 0;
+        // padding: 0;
         min-width: 120px;
       }
 
@@ -93,17 +100,46 @@
 
   .publish-button__work,
   .publish-button__update {
-    border-color: #1b1b4c;
-    background: #1b1b4c;
-    color: white;
+    color: white !important;
+    background: #4b6584 !important;
     &:hover:enabled {
-      background: #1b1b5d;
+      background: #4b6584;
     }
     &:disabled {
-      border-color: #9898ef;
-      color: #9898ef;
+      border-color: #4b6584;
+      color: white;
     }
     margin: 0;
     min-width: 140px;
   }
+}
+
+.ql-picker-item[data-value="SansSerif"]::before {
+  content: "Sans Serif" !important;
+}
+
+.ql-picker-item[data-value="Serif"]::before {
+  content: "Serif" !important;
+}
+.ql-picker-item[data-value="Monospace"]::before {
+  content: "Monospace" !important;
+}
+
+.ql-font-Serif {
+  font-family: sans-serif !important;
+}
+
+.ql-font-Serif {
+  font-family: sans-serif !important;
+}
+
+.ql-font-Serif {
+  font-family: sans-serif !important;
+}
+
+.ql-font-Serif {
+  font-family: serif !important;
+}
+.ql-font-Monospace {
+  font-family: monospace !important;
 }
