@@ -70,8 +70,8 @@ class Header extends Component {
         <Container>
           <Row>
             <Col>
-              <Navbar expand="lg" className="navbar">
-                <Navbar.Brand className="navbar__brand text-white">
+              <Navbar expand="lg" className="navbar bg-white">
+                <Navbar.Brand className="navbar__brand color-dark-b">
                   <Link to="/home">pageX</Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
