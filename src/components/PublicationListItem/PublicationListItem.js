@@ -112,7 +112,7 @@ class PublicationListItem extends Component {
         />
         <ListGroupItem
           key={index}
-          style={{ background: "white", padding: ".75rem" }}
+          style={{ background: "#F5FAFE", padding: ".75rem" }}
           className="m-0 p-0 pl-3"
         >
           <Row>

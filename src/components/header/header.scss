@@ -1,7 +1,6 @@
 @import "../../style/abstract/abstract";
 
 .header {
-  background-color: #4b6584 !important;
   text-align: center;
   text-align: -webkit-center;
 
@@ -106,12 +105,13 @@
 .btn-create {
   border: 1px solid #dcdcdc;
   background: none;
+  color: #4b6584;
   border-radius: $border-radius;
   padding: 2px 15px;
   &:hover {
-    background: white;
-    color: #4b6584;
-    border-color: white;
+    background: #4b6584;
+    color: white;
+    border-color: #4b6584;
   }
 }
 .navbar-right {
@@ -120,12 +120,12 @@
     border: none;
     @include easeOut;
     background: none;
-    color: $c-neutral;
+    color: #4b6584;
     text-align: left;
 
     &:hover {
       background: none;
-      color: white;
+      color: #1a232d;
       border: none;
     }
   }
@@ -180,8 +180,9 @@
   }
 }
 .navbar-light .navbar-nav .nav-link {
-  color: #dcdcdc;
+  color: #4b6584;
 }
-.navbar-light .navbar-nav .nav-link:hover {
-  color: white;
+
+.color-dark-b {
+  color: #4b6584 !important;
 }
