@@ -66,7 +66,7 @@ class Popup extends Component {
             }
 
             {userPublication && userPublication.publication_text &&
-              <div>{userPublication.publication_text}</div>
+              <div dangerouslySetInnerHTML={{ __html: userPublication.publication_text }}></div>
             }
 
             {userPublication && userPublication.publication_img === '1' &&

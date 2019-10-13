@@ -267,10 +267,9 @@ export default class ContentCard extends Component {
               </p>
             )}
             {userPublication && userPublication.publication_text && (
-              <p className="content-card__text">
-                {userPublication.publication_text}
+              <p className="content-card__text" dangerouslySetInnerHTML={{ __html: userPublication.publication_text }}>
               </p>
-            )}            
+            )}
             {userPublication && userPublication.publication_img === '1' &&
               <Image className="content-card__image" src={BASE_URL + userPublication.post} onClick={this.showPopup} />
             }
