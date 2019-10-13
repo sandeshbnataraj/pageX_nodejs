@@ -113,3 +113,33 @@
     min-width: 140px;
   }
 }
+
+.ql-picker-item[data-value="SansSerif"]::before {
+  content: "Sans Serif" !important;
+}
+
+.ql-picker-item[data-value="Serif"]::before {
+  content: "Serif" !important;
+}
+.ql-picker-item[data-value="Monospace"]::before {
+  content: "Monospace" !important;
+}
+
+.ql-font-Serif {
+  font-family: sans-serif !important;
+}
+
+.ql-font-Serif {
+  font-family: sans-serif !important;
+}
+
+.ql-font-Serif {
+  font-family: sans-serif !important;
+}
+
+.ql-font-Serif {
+  font-family: serif !important;
+}
+.ql-font-Monospace {
+  font-family: monospace !important;
+}

@@ -15,14 +15,22 @@ import Attachment from "../generic/Attachment";
 import "./Publication.scss";
 import DropdownItem from "react-bootstrap/DropdownItem";
 
+import ReactQuill from 'react-quill'; // ES6
+import 'react-quill/dist/quill.snow.css'; // ES6
+
 const INITIAL_STATE = {
   text: "",
   attachment: null,
   accessType: null,
-  workType: null,
+  workType: "null",
   posting: false,
   subject: "",
 };
+
+const Quill = ReactQuill.Quill
+var Font = Quill.import('formats/font');
+Font.whitelist = ['SansSerif', 'Serif', 'Monospace'];
+Quill.register(Font, true);
 
 class Publication extends Component {
   static propTypes = {
@@ -66,7 +74,7 @@ class Publication extends Component {
     }
     if (this.props.publicationType === "work") {
       // when publication is opened via "Create+" user has to select access type and work type.
-      return accessType && workType;
+      return accessType;// && workType;
     }
     return this.props.publicationType === "update";
   }
@@ -162,6 +170,11 @@ class Publication extends Component {
       this.props.publicationType === "work" && (
         <div className="d-flex justify-content-end bbar">
           <button
+            className="publish-button__update btn mr-2"
+          >
+            <span className="ml-2"> +Manuscript</span>
+          </button>
+          <button
             onClick={this.onSubmit}
             disabled={!this.isValid()}
             className="publish-button__work btn"
@@ -192,29 +205,29 @@ class Publication extends Component {
   render() {
     const { className } = this.props;
     let sty = "shadow p-3 mb-5 rounded";
-    let dropDown = "";
-    if (this.props.from) {
-      if (this.props.from === "modal") {
-        sty = "";
-        dropDown = (
-          <DropdownButton id="workType" className="ml-1 flex-grow-1 float-right mr-4" title={this.state.workType ? this.state.workType.worktype : "Please Select"}>
-            <div className="NavDropDownArrow"></div>
-            <DropdownItem onClick={() => {
-              this.setState({ workType: null });
-              document.getElementById("workType").click()
-            }}>Please Select</DropdownItem>
-            <DropdownItem onClick={() => {
-              this.setState({ workType: { id: 1, worktype: "Piece" } });
-              document.getElementById("workType").click()
-            }}>Piece</DropdownItem>
-            <DropdownItem onClick={() => {
-              this.setState({ workType: { id: 2, worktype: "Opinion" } });
-              document.getElementById("workType").click()
-            }}>Opinion</DropdownItem>
-          </DropdownButton>
-        );
-      }
-    }
+    // let dropDown = "";
+    // if (this.props.from) {
+    //   if (this.props.from === "modal") {
+    //     sty = "";
+    //     dropDown = (
+    //       <DropdownButton id="workType" className="ml-1 flex-grow-1 float-right mr-4" title={this.state.workType ? this.state.workType.worktype : "Please Select"}>
+    //         <div className="NavDropDownArrow"></div>
+    //         <DropdownItem onClick={() => {
+    //           this.setState({ workType: null });
+    //           document.getElementById("workType").click()
+    //         }}>Please Select</DropdownItem>
+    //         <DropdownItem onClick={() => {
+    //           this.setState({ workType: { id: 1, worktype: "Piece" } });
+    //           document.getElementById("workType").click()
+    //         }}>Piece</DropdownItem>
+    //         <DropdownItem onClick={() => {
+    //           this.setState({ workType: { id: 2, worktype: "Opinion" } });
+    //           document.getElementById("workType").click()
+    //         }}>Opinion</DropdownItem>
+    //       </DropdownButton>
+    //     );
+    //   }
+    // }
 
     return (
       <Form className={`publication-form ${sty} ${className || ""}`}>
@@ -234,9 +247,9 @@ class Publication extends Component {
 
 
 
-              {dropDown}
+              {/* {dropDown} */}
 
-              {this.props.publicationType === "work" && this.state.workType && this.state.workType.worktype === "Opinion" &&
+              {/* {this.props.publicationType === "work" && this.state.workType && this.state.workType.worktype === "Opinion" &&
 
                 <div className="form-group">
                   <Form.Control
@@ -245,31 +258,46 @@ class Publication extends Component {
                     value={this.state.subject}
                     onChange={this.onPublicationTextChange}
                   />
-                </div>}
+                </div>} */}
 
-              <div className="publication-form__control">
-                <Form.Control
-                  placeholder="Share with the world your latest piece..."
-                  className="publication-form__textarea"
-                  as="textarea"
-                  rows="3"
-                  name="text"
-                  value={this.state.text}
-                  onChange={this.onPublicationTextChange}
-                />
-              </div>
+              {this.props.publicationType === "work" &&
+                <div className="publication-form__control" style={{ clear: "both", height: "200px" }}>
+                  <ReactQuill
+                    style={{ clear: "both", height: "160px" }}
+                    name="text"
+                    theme="snow"
+                    onChange={(e) => { this.setState({ text: e }); }}
+                    value={this.state.text}
+                    modules={Publication.modules}
+                    formats={Publication.formats}
+                  /><br />
+                </div>}
+              {this.props.publicationType !== "work" &&
+                <div className="publication-form__control">
+                  <Form.Control
+                    placeholder="Share with the world your latest piece..."
+                    className="publication-form__textarea"
+                    as="textarea"
+                    rows="3"
+                    name="text"
+                    value={this.state.text}
+                    onChange={this.onPublicationTextChange}
+                  />
+                </div>}
             </div>
           </Card.Body>
         </Card>
         <div className="publication-form__attachments">
-          <Attachment
+          {this.props.publicationType !== "work" && <Attachment
             attachment={this.state.attachment}
             onUpload={this.onUpload}
             onRemove={this.onRemove}
-          />
-          {this.accessTypeDropdown}
+          />}
+          {/* {this.accessTypeDropdown} */}
+
           {this.publishUpdateButton}
         </div>
+
         {this.publishWorkButton}
       </Form>
     );
@@ -298,3 +326,30 @@ export default connect(
   mapStateToProps,
   mapDispatchersToProps
 )(Publication);
+
+/* 
+ * Quill modules to attach to editor
+ * See https://quilljs.com/docs/modules/ for complete options
+ */
+Publication.modules = {
+  toolbar: [
+    [{ size: [] }],
+    [{ 'header': '1' }, { 'header': '2' }, { 'font': Font.whitelist }],
+    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+    [{ 'list': 'ordered' }, { 'list': 'bullet' },
+    { 'indent': '-1' }, { 'indent': '+1' }],
+    ['link'],
+    ['clean']
+  ]
+}
+/* 
+ * Quill editor formats
+ * See https://quilljs.com/docs/formats/
+ */
+Publication.formats = [
+  'header', 'font', 'size',
+  'bold', 'italic', 'underline', 'strike', 'blockquote',
+  'list', 'bullet', 'indent',
+  'link', 'image', 'video'
+]
+
