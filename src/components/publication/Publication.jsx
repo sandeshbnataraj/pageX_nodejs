@@ -169,7 +169,7 @@ class Publication extends Component {
     return (
       this.props.publicationType === "work" && (
         <div className="d-flex justify-content-end bbar">
-          <button disabled={true}
+          <button
             className="publish-button__update btn mr-2"
           >
             <span className="ml-2"> +Manuscript</span>
@@ -204,7 +204,7 @@ class Publication extends Component {
 
   render() {
     const { className } = this.props;
-    let sty = "shadow p-3 rounded";
+    let sty = "shadow p-3 mb-5 rounded";
     // let dropDown = "";
     // if (this.props.from) {
     //   if (this.props.from === "modal") {

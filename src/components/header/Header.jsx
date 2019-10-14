@@ -70,8 +70,8 @@ class Header extends Component {
         <Container>
           <Row>
             <Col>
-              <Navbar expand="lg" className="navbar bg-white">
-                <Navbar.Brand className="navbar__brand color-dark-b">
+              <Navbar expand="lg" className="navbar">
+                <Navbar.Brand className="navbar__brand text-white">
                   <Link to="/home">pageX</Link>
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -131,7 +131,7 @@ class Header extends Component {
                     <NavDropdown
                       className="navbar-dropdown text-white"
                       title={
-                        user && user[0].first_name + " " + user[0].last_name
+                        user && user[0].first_name 
                       }
                       id="basic-nav-dropdown"
                     >

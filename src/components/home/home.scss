@@ -92,21 +92,42 @@
   margin-right: 5px;
 }
 
-
-.row-mem:hover .member-email a,
-.row-mem:hover .member-email svg {
+.cover-pic-img-content {
+  padding: 10px !important;
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  box-sizing: border-box;
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+}
+.row-mem:hover .member-email a,.row-mem:hover .member-email svg {
   color: #4b6584;
 }
 
-.row-mem:hover .member-caption {
-  color: white !important;
+// .row-mem:hover .member-caption {
+//   color: white !important;
+// }
+
+// .row-mem:hover .member__username {
+//   background: #4b6584;
+// }
+
+.row-mem:hover .cover-pic-img-content {
+  bottom: 24px;
+  right: -76px;
+
+  transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  background-image: url("cross1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  cursor: pointer;
 }
-
-.row-mem:hover .member__username {
-  background: #4b6584;
-
-}
-
 .mr-2r {
   margin-right: 2rem !important;
 }

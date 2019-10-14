@@ -112,13 +112,13 @@ class PublicationListItem extends Component {
         />
         <ListGroupItem
           key={index}
-          style={{ background: "#F5FAFE", padding: ".75rem" }}
+          style={{ background: "white", padding: ".75rem" }}
           className="m-0 p-0 pl-3"
         >
           <Row>
             <Col md={12} className="p-0">
               <p className="ml-1" style={{ fontSize: "0.9rem", lineHeight: "1" }}>
-                {userPublication.first_name + " " + userPublication.last_name}{" "}
+                {userPublication.first_name}{" "}
               </p>
               <h6>
                 <span

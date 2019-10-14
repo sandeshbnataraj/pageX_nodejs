@@ -51,7 +51,7 @@ export default class HomeView extends React.Component {
                 </div>
               )}
             </Col>
-            <Col md={3} className="ml-3">
+            <Col md={3}>
               <aside className="members shadow p-3 mb-5">
                 <h6 className="members__title">Influential members</h6>
                 <div className="members__container">
@@ -97,7 +97,7 @@ export default class HomeView extends React.Component {
                                   }}
                                 >
                                   <small className="member-caption">
-                                    {value.first_name + " " + value.last_name}
+                                    {value.first_name }
                                   </small>
                                 </Link>
                               </h6>
@@ -120,6 +120,7 @@ export default class HomeView extends React.Component {
                                 </Link>
                               </p>
                             </div>
+                            <div className="cover-pic-img-content"></div>
                           </Col>
                         </Row>
                       );

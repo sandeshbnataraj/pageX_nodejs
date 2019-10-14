@@ -160,7 +160,7 @@ export default class Left extends Component {
               />
             )}
             <h3 className="left__username text-center mt-2">
-              {user && user.first_name + " " + user.last_name}
+              {user && user.first_name }
             </h3>
             <p className="left__description text-center">{user && user.bio}</p>
             <div className="left-meta">

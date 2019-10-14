@@ -217,7 +217,7 @@ export default class ContentCard extends Component {
                   <span className="d-flex flex-column">
                     <Link to={{ pathname: '/profile/', search: queryString.stringify(Object.assign({}, { user_id: userPublication.user_id })), state: { currentuser: userPublication.currentuser } }}>
                       <h6
-                        id='username-content' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(userPublication, this.props.postIndex)} className="content-card__username">{userPublication && (userPublication.first_name + ' ' + userPublication.last_name)}</h6>
+                        id='username-content' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(userPublication, this.props.postIndex)} className="content-card__username">{userPublication && (userPublication.first_name )}</h6>
                     </Link>
                     <Overlay
                       show={this.state.showPopOver[this.props.postIndex]}

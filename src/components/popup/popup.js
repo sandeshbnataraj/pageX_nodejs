@@ -52,7 +52,7 @@ class Popup extends Component {
               <div className="d-flex flex-column align-items-center">
                 <Link to={{ pathname: '/profile/', search: queryString.stringify(Object.assign({}, { user_id: userPublication.user_id })), state: { currentuser: userPublication.currentuser } }}>
                   <Image className="header-avatar" src={userPublication && BASE_URL + userPublication.avatar} />
-                  <div className="header-title">{userPublication && (userPublication.first_name + ' ' + userPublication.last_name)}</div>
+                  <div className="header-title">{userPublication && (userPublication.first_name)}</div>
                 </Link>
                 {userPublication && !isNaN(Date.parse(userPublication.created_at)) &&
                   <span className="header-ago"><ReactTimeAgo date={new Date(userPublication.created_at)} /> - Public</span>

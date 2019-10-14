@@ -45,7 +45,7 @@ class UserNameFormatter extends React.Component {
     const { user, index } = this.props
     return (
       <React.Fragment>
-        <span id='likedusers' className='user-name' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(user, index)} >{user.first_name} {user.last_name}</span>
+        <span id='likedusers' className='user-name' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(user, index)} >{user.first_name}</span>
         <Overlay
           show={this.state.showPopOver[index]}
           target={this.refList}
