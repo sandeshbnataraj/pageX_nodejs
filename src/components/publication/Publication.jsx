@@ -25,6 +25,7 @@ const INITIAL_STATE = {
   workType: "null",
   posting: false,
   subject: "",
+  showEditorToolBar: false
 };
 
 const Quill = ReactQuill.Quill
@@ -168,8 +169,8 @@ class Publication extends Component {
   get publishWorkButton() {
     return (
       this.props.publicationType === "work" && (
-        <div className="d-flex justify-content-end bbar">
-          <button
+        <div className="d-flex flex-grow-1 justify-content-end">
+          <button disabled={true}
             className="publish-button__update btn mr-2"
           >
             <span className="ml-2"> +Manuscript</span>
@@ -204,7 +205,7 @@ class Publication extends Component {
 
   render() {
     const { className } = this.props;
-    let sty = "shadow p-3 mb-5 rounded";
+    let sty = "shadow p-3 rounded";
     // let dropDown = "";
     // if (this.props.from) {
     //   if (this.props.from === "modal") {
@@ -227,8 +228,24 @@ class Publication extends Component {
     //       </DropdownButton>
     //     );
     //   }
-    // }
-
+    // }    
+    if (this.state.showEditorToolBar === false) {
+      Publication.modules = {
+        toolbar: false
+      }
+    } else {
+      Publication.modules = {
+        toolbar: [
+          [{ size: [] }],
+          [{ 'header': '1' }, { 'header': '2' }, { 'font': Font.whitelist }],
+          ['bold', 'italic', 'underline', 'strike', 'blockquote'],
+          [{ 'list': 'ordered' }, { 'list': 'bullet' },
+          { 'indent': '-1' }, { 'indent': '+1' }],
+          ['link'],
+          ['clean']
+        ]
+      }
+    }
     return (
       <Form className={`publication-form ${sty} ${className || ""}`}>
         <Card>
@@ -245,7 +262,18 @@ class Publication extends Component {
                 </Link>
               </figure>
 
-
+              {this.props.publicationType === "work" &&
+                < div className="form-group">
+                  <button
+                    onClick={(e) => {
+                      e.preventDefault();
+                      this.setState({ showEditorToolBar: !this.state.showEditorToolBar })
+                    }}
+                    className="btn float-right mb-2 publish-button__update"
+                  >
+                    <span className="ml-2"> {!this.state.showEditorToolBar ? "Show Edit Options" : "Hide Edit Options"}</span>
+                  </button>
+                </div>}
 
               {/* {dropDown} */}
 
@@ -288,18 +316,18 @@ class Publication extends Component {
           </Card.Body>
         </Card>
         <div className="publication-form__attachments">
-          {this.props.publicationType !== "work" && <Attachment
+          <Attachment
             attachment={this.state.attachment}
             onUpload={this.onUpload}
             onRemove={this.onRemove}
-          />}
+          />
           {/* {this.accessTypeDropdown} */}
 
           {this.publishUpdateButton}
+          {this.publishWorkButton}
         </div>
-
-        {this.publishWorkButton}
-      </Form>
+        
+      </Form >
     );
   }
 }
@@ -331,17 +359,7 @@ export default connect(
  * Quill modules to attach to editor
  * See https://quilljs.com/docs/modules/ for complete options
  */
-Publication.modules = {
-  toolbar: [
-    [{ size: [] }],
-    [{ 'header': '1' }, { 'header': '2' }, { 'font': Font.whitelist }],
-    ['bold', 'italic', 'underline', 'strike', 'blockquote'],
-    [{ 'list': 'ordered' }, { 'list': 'bullet' },
-    { 'indent': '-1' }, { 'indent': '+1' }],
-    ['link'],
-    ['clean']
-  ]
-}
+
 /* 
  * Quill editor formats
  * See https://quilljs.com/docs/formats/
