@@ -9,6 +9,7 @@ import ContentCard from "../content-card/content-card";
 import "./profileCenter.scss";
 import isEqual from "lodash/isEqual";
 import { BASE_URL } from "../../app.constants";
+import AddCollectionModel from "./AddCollectionModel";
 
 export default class ProfileCenter extends Component {
   constructor() {
@@ -20,7 +21,8 @@ export default class ProfileCenter extends Component {
       coverPicChanged: false,
       coverpic: "",
       coverpicView: "",
-      loading: false
+      loading: false,
+      showAddCollectionModel: false
     };
     this.getUpdates = this.getUpdates.bind(this);
     this.getWorks = this.getWorks.bind(this);
@@ -77,6 +79,7 @@ export default class ProfileCenter extends Component {
     this.props.editProfile({ coverpic: this.state.coverpic });
   }
   render() {
+    console.log(this.state);
     return (
       <div className="right">
         <Tabs
@@ -95,6 +98,15 @@ export default class ProfileCenter extends Component {
             ))}
           </Tab>
           <Tab eventKey="works" title="Works" unmountOnExit={true}>
+            <div className="text-right">
+              <button className="mt-2 btn edit-profile-button-background" onClick={(e) => {
+                e.preventDefault();
+                this.setState({ showAddCollectionModel: true });
+              }}>Create Collection</button>
+              <AddCollectionModel workPublication={this.state.workPublication} show={this.state.showAddCollectionModel} onHide={() => {
+                this.setState({ showAddCollectionModel: false });
+              }} />
+            </div>
             {this.state.workPublication.map((userPublication, index) => (
               <ContentCard
                 key={index}
