@@ -31,7 +31,7 @@ class Container extends React.Component {
   render() {
     return (
       <React.Fragment>
-        {this.state.isLoggedIn ?
+        {this.state.isLoggedIn == false?
           <section>
             <HeaderContainer />
             <Switch>
