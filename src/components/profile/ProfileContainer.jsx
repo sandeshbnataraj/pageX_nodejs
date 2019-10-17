@@ -57,6 +57,7 @@ class ProfileContainer extends React.Component {
       this.props.getPartners();
     }
     document.addEventListener("scroll", this.trackScrolling);
+    // console.log("userPartners",this.props.userPartners)
   }
   componentDidUpdate(prevProps) {
     if (!isEqual(prevProps.location, this.props.location)) {
