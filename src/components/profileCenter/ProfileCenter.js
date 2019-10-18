@@ -26,7 +26,7 @@ export default class ProfileCenter extends Component {
       dummyData: [
         {
           "id": 5,
-          "publication_text": "hi",
+          "publication_text": "<p>test test</p><p><br></p>",
           "publication_img": "1",
           "publication_vid": "0",
           "publication_subject": null,
@@ -48,7 +48,7 @@ export default class ProfileCenter extends Component {
         },
         {
           "id": 4,
-          "publication_text": "",
+          "publication_text": "<p>test test</p><p><br></p>",
           "publication_img": "1",
           "publication_vid": "0",
           "publication_subject": null,
@@ -70,7 +70,7 @@ export default class ProfileCenter extends Component {
         },
         {
           "id": 3,
-          "publication_text": "Work",
+          "publication_text": "<p>testing editing feature </p>",
           "publication_img": "0",
           "publication_vid": "0",
           "publication_subject": null,
@@ -92,7 +92,7 @@ export default class ProfileCenter extends Component {
         },
         {
           "id": 2,
-          "publication_text": "",
+          "publication_text": "<p>testing editing feature </p>",
           "publication_img": "1",
           "publication_vid": "0",
           "publication_subject": null,

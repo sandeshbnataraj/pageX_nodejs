@@ -15,3 +15,10 @@
     top: -6px;
     left: -17px;
 }
+
+.bodycss{
+    *{
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+}
