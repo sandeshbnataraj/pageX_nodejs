@@ -244,7 +244,7 @@ export default class ProfileCenter extends Component {
           "promoted": 1,
           "currentuser": 1
         },
-        {
+                {
           "id": 5,
           "publication_text": "hi",
           "publication_img": "1",
@@ -435,7 +435,7 @@ export default class ProfileCenter extends Component {
                 e.preventDefault();
                 this.setState({ showAddCollectionModel: true });
               }}>Create Collection</button>
-              <AddCollectionModel workPublication={this.state.dummyData} show={this.state.showAddCollectionModel} onHide={() => {
+              <AddCollectionModel workPublication={this.state.workPublication} show={this.state.showAddCollectionModel} onHide={() => {
                 this.setState({ showAddCollectionModel: false });
               }} />
             </div>

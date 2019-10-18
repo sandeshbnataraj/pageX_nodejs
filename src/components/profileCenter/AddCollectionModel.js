@@ -11,28 +11,28 @@ export default class AddCollectionModel extends Component {
         onHide: PropTypes.func.isRequired
     };
 
-    renderCards = () => {
+    renderCards = () =>{
         const { show, onHide, workPublication } = this.props;
         let cards = {
-            firstColumn: [],
-            secondColumn: [],
-            thirdColumn: [],
+            firstColumn : [],
+            secondColumn : [],
+            thirdColumn : [],
         }
 
         let i = 0;
 
         workPublication.filter((v) => (v.publication_type == 2)).map(w => {
-            switch (i % 3) {
-                case 0: {
+            switch(i%3){
+                case 0:{
                     cards['firstColumn'].push(
-                        <Card style={{ margin: '15px', textAlign: 'center', float: 'left' }}>
+                        <Card  style={{ margin: '15px', textAlign: 'center',float:'left' }}>
                             <Form.Check className="checkbox" type="checkbox" />
                             <CardImg top width="60%" src='http://deveycon.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fc75768999fa25341695f1f66af2d43be9f47d8/index.jpg' alt="Card image cap" />
                             {/* <Card.Header><input type="checkbox" /></Card.Header> */}
-                            <Card.Body className="bodycss" style={{ maxWidth: '150px' }}>
+                            <Card.Body className="bodycss" style={{maxWidth:'150px'}}>
                                 {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
-                                <Card.Text dangerouslySetInnerHTML={{ __html: w.publication_text }} />
-                                {/* {w.publication_text} */}
+                                <Card.Text dangerouslySetInnerHTML={{__html:w.publication_text}}/>
+                                    {/* {w.publication_text} */}
                                 {/* <Card.Footer><input type="checkbox" /></Card.Footer> */}
                                 {/* <Button>Button</Button> */}
                             </Card.Body>
@@ -40,17 +40,17 @@ export default class AddCollectionModel extends Component {
                     );
                     break;
                 }
-                case 1: {
+                case 1:{
 
                     cards['secondColumn'].push(
-                        <Card style={{ margin: '15px', textAlign: 'center', float: 'left' }}>
+                        <Card  style={{ margin: '15px', textAlign: 'center',float:'left' }}>
                             <Form.Check className="checkbox" type="checkbox" />
                             <CardImg top width="60%" src='http://deveycon.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fc75768999fa25341695f1f66af2d43be9f47d8/index.jpg' alt="Card image cap" />
                             {/* <Card.Header><input type="checkbox" /></Card.Header> */}
-                            <Card.Body style={{ maxWidth: '150px' }}>
+                            <Card.Body style={{maxWidth:'150px'}}>
                                 {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
-                                <Card.Text dangerouslySetInnerHTML={{ __html: w.publication_text }} />
-                                {/* {w.publication_text} */}
+                                <Card.Text dangerouslySetInnerHTML={{__html:w.publication_text}}/>
+                                    {/* {w.publication_text} */}
                                 {/* <Card.Footer><input type="checkbox" /></Card.Footer> */}
                                 {/* <Button>Button</Button> */}
                             </Card.Body>
@@ -59,17 +59,17 @@ export default class AddCollectionModel extends Component {
                     break;
 
                 }
-                case 2: {
+                case 2:{
 
                     cards['thirdColumn'].push(
-                        <Card style={{ margin: '15px', textAlign: 'center', float: 'left' }}>
+                        <Card  style={{ margin: '15px', textAlign: 'center',float:'left' }}>
                             <Form.Check className="checkbox" type="checkbox" />
                             <CardImg top width="60%" src='http://deveycon.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fc75768999fa25341695f1f66af2d43be9f47d8/index.jpg' alt="Card image cap" />
                             {/* <Card.Header><input type="checkbox" /></Card.Header> */}
-                            <Card.Body style={{ maxWidth: '150px' }}>
+                            <Card.Body style={{maxWidth:'150px'}}>
                                 {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
-                                <Card.Text dangerouslySetInnerHTML={{ __html: w.publication_text }} />
-                                {/* {w.publication_text} */}
+                                <Card.Text dangerouslySetInnerHTML={{__html:w.publication_text}}/>
+                                    {/* {w.publication_text} */}
                                 {/* <Card.Footer><input type="checkbox" /></Card.Footer> */}
                                 {/* <Button>Button</Button> */}
                             </Card.Body>
@@ -80,7 +80,7 @@ export default class AddCollectionModel extends Component {
                 }
             }
             i++;
-
+            
         });
         console.log(cards)
         return cards
