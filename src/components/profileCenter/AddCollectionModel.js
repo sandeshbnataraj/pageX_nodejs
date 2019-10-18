@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { Modal, Card, CardImg, Row, Container, Dropdown, Form, Button } from "react-bootstrap";
+import { Modal, Card, CardImg, Row, Container, Col, Form, Button } from "react-bootstrap";
 
 
 import "./AddCollectionModel.scss";
@@ -52,19 +52,20 @@ export default class AddCollectionModel extends Component {
                             <br />
                             <Row className='centerise-row scroll'>
                                 {workPublication && workPublication.filter((v) => (v.publication_type == 2)).map(w => {
-                                    return <Card style={{ margin: '15px', textAlign: 'center',float:'left' }}>
-                                        <Form.Check className="checkbox" type="checkbox" />
-                                        <CardImg top width="60%" src='http://deveycon.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fc75768999fa25341695f1f66af2d43be9f47d8/index.jpg' alt="Card image cap" />
-                                        {/* <Card.Header><input type="checkbox" /></Card.Header> */}
-                                        <Card.Body>
-                                            {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
-                                            <Card.Text>
-                                                {w.publication_text} &nbsp; &nbsp;
-                                            </Card.Text>
-                                            {/* <Card.Footer><input type="checkbox" /></Card.Footer> */}
-                                            {/* <Button>Button</Button> */}
-                                        </Card.Body>
-                                    </Card>
+                                    return <Col md xs lg="4">
+                                                <Card style={{ margin: '15px', textAlign: 'center',float:'left' }}>
+                                                    <Form.Check className="checkbox" type="checkbox" />
+                                                    <CardImg top width="60%" src='http://deveycon.herokuapp.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBFdz09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--2fc75768999fa25341695f1f66af2d43be9f47d8/index.jpg' alt="Card image cap" />
+                                                    {/* <Card.Header><input type="checkbox" /></Card.Header> */}
+                                                    <Card.Body>
+                                                        {/* <CardSubtitle>Card subtitle</CardSubtitle> */}
+                                                        <Card.Text dangerouslySetInnerHTML={{__html:w.publication_text}}/>
+                                                            {/* {w.publication_text} */}
+                                                        {/* <Card.Footer><input type="checkbox" /></Card.Footer> */}
+                                                        {/* <Button>Button</Button> */}
+                                                    </Card.Body>
+                                                </Card>
+                                            </Col>
 
                                     //  <p>{w.publication_text}</p>
                                 })}
