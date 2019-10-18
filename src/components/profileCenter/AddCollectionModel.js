@@ -38,7 +38,7 @@ export default class AddCollectionModel extends Component {
                             {workPublication && workPublication.map(w => {
                                 return <div className="border col-md-3 float-left mb-2 mr-3">
                                     <input type="checkbox" />
-                                    <img width="250" height="250" src={w.post} /><br />
+                                    <img width="152" height="101" src={w.post} /><br />
                                     <p dangerouslySetInnerHTML={{ __html: w.publication_text }}></p>
                                 </div>
                             })}
