@@ -95,6 +95,7 @@ export default class AddCollectionModel extends Component {
                 show={show}
                 onHide={onHide}
                 centered
+                id="createCollectionModal"
                 size="lg"
                 className="publication-modal modal"
                 aria-labelledby="contained-modal-title-vcenter"
@@ -102,23 +103,22 @@ export default class AddCollectionModel extends Component {
                 <Modal.Header closeButton>
                     <div className="header-title">Create Collection</div>
                 </Modal.Header>
-                <Modal.Body>
-                    {/* <Card style={{ border: 'none' }}>
-                        POST
-                    </Card>
-                    <Row>
-                    </Row> */}
+                <Modal.Body className="p-3">
 
-                    < div className="form-group">
-                        <Container style={{ borderBottom: '2px solid #eee' }}>
-                            <label>Post Collection</label>
-                            <br />
-                            <Row className='centerise-row'>
-                                <Card style={{ margin: '10px', textAlign: 'center' }}>
-                                    <Card.Body>Dummy</Card.Body>
-                                </Card>
-                            </Row>
-                        </Container>
+                    <div className="form-group">
+                        <h3>Post Collection</h3>
+                        <br />
+                        <h3>Recent Pieces</h3>
+                        <br />
+                        <div className="col-md-12" style={{ maxHeight: "370px", overflow: "auto" }}>
+                            {workPublication && workPublication.map(w => {
+                                return <div className="border col-md-3 float-left mb-2 mr-3">
+                                    <input type="checkbox" />
+                                    <img width="250" height="250" src={w.post} /><br />
+                                    <p>{w.publication_text}</p>
+                                </div>
+                            })}
+                        </div>
                     </ div>
 
 
@@ -139,13 +139,11 @@ export default class AddCollectionModel extends Component {
                             </Row>
                         </Container>
                     </ div>
-
-
                 </Modal.Body>
-                <Modal.Footer style={{ alignItems: "flex-end" }}>
-                    <Button variant="primary">Create</Button>
+                <Modal.Footer style={{ flexDirection: "initial" }}>
+                    <button type="button" class="btn btn-primary">Create</button>
                 </Modal.Footer>
-            </Modal>
+            </Modal >
         );
     }
 }
