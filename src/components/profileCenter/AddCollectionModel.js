@@ -39,7 +39,7 @@ export default class AddCollectionModel extends Component {
                                 return <div className="border col-md-3 float-left mb-2 mr-3">
                                     <input type="checkbox" />
                                     <img width="250" height="250" src={w.post} /><br />
-                                    <p>{w.publication_text}</p>
+                                    <p dangerouslySetInnerHTML={{ __html: w.publication_text }}></p>
                                 </div>
                             })}
                         </div>
