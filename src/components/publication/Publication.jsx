@@ -25,7 +25,8 @@ const INITIAL_STATE = {
   workType: "null",
   posting: false,
   subject: "",
-  showEditorToolBar: false
+  showEditorToolBar: false,
+  isManuscript: false
 };
 
 const Quill = ReactQuill.Quill
@@ -170,7 +171,14 @@ class Publication extends Component {
     return (
       this.props.publicationType === "work" && (
         <div className="d-flex flex-grow-1 justify-content-end">
-          <button disabled={true}
+          <button
+            onClick={(e) => {
+              this.setState({ isManuscript: true }, () => {
+                this.onSubmit(e)
+              });
+              e.preventDefault();
+            }}
+            disabled={!this.isValid()}
             className="publish-button__update btn mr-2"
           >
             <span className="ml-2"> +Manuscript</span>
@@ -248,6 +256,8 @@ class Publication extends Component {
     }
     return (
       <Form className={`publication-form ${sty} ${className || ""}`}>
+        <div id="divalert" className="alert alert-success"
+          style={{ display: "none" }}></div>
         <Card>
           <Card.Body className="publication-form__body">
             <div className={this.props.publicationType === "work" ? "" : "d-flex"}>
@@ -326,7 +336,7 @@ class Publication extends Component {
           {this.publishUpdateButton}
           {this.publishWorkButton}
         </div>
-        
+
       </Form >
     );
   }
