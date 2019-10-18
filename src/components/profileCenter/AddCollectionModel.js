@@ -19,6 +19,7 @@ export default class AddCollectionModel extends Component {
                 show={show}
                 onHide={onHide}
                 centered
+                id="createCollectionModal"
                 size="lg"
                 className="publication-modal modal"
                 aria-labelledby="contained-modal-title-vcenter"
@@ -26,16 +27,28 @@ export default class AddCollectionModel extends Component {
                 <Modal.Header closeButton>
                     <div className="header-title">Create Collection</div>
                 </Modal.Header>
-                <Modal.Body>
-                    < div className="form-group">
-                        <label>Recent Pieces</label>
+                <Modal.Body className="p-3">
+
+                    <div className="form-group">
+                        <h3>Post Collection</h3>
                         <br />
-                        {workPublication && workPublication.map(w => {
-                            return <p>{w.publication_text}</p>
-                        })}
+                        <h3>Recent Pieces</h3>
+                        <br />
+                        <div className="col-md-12" style={{ maxHeight: "370px", overflow: "auto" }}>
+                            {workPublication && workPublication.map(w => {
+                                return <div className="border col-md-3 float-left mb-2 mr-3">
+                                    <input type="checkbox" />
+                                    <img width="250" height="250" src={w.post} /><br />
+                                    <p>{w.publication_text}</p>
+                                </div>
+                            })}
+                        </div>
                     </ div>
                 </Modal.Body>
-            </Modal>
+                <Modal.Footer style={{ flexDirection: "initial" }}>
+                    <button type="button" class="btn btn-primary">Create</button>
+                </Modal.Footer>
+            </Modal >
         );
     }
 }
