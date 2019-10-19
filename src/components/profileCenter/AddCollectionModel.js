@@ -14,12 +14,30 @@ export default class AddCollectionModel extends Component {
 
     constructor() {
         super({});
-        this.state = { postId: -1 };
+        this.state = { postIds: [] };
+    }
+
+    addToCollection(id) {
+        debugger;
+        let postIds = this.state.postIds;
+        if (this.getSelection(id)) {
+            postIds = postIds.filter(w => w !== id);
+        } else {
+            postIds.push(id);
+        }
+        this.setState({ postIds });
+    }
+
+    getSelection(id) {
+        return this.state.postIds.find(w => w === id) ? true : false;
+    }
+
+    getSelected() {        
+        return this.props.workPublication.filter(w => this.state.postIds.indexOf(w.id) > -1);
     }
 
     render() {
         const { show, onHide, workPublication } = this.props;
-        const selectedworkPublication = workPublication.find(w => w.id === this.state.postId);
         return (
             <Modal
                 show={show}
@@ -41,11 +59,11 @@ export default class AddCollectionModel extends Component {
                         <div className="col-md-12" style={{ maxHeight: "300px", overflow: "auto" }}>
                             {workPublication && workPublication.map(w => {
                                 return <div className={"border col-md-3 float-left mb-2 mr-3 " +
-                                    (w.id === this.state.postId ? "border-info" : "")}
+                                    (this.getSelection(w.id) ? "border-info" : "")}
                                     style={{
                                         cursor: "pointer", minWidth: "184px", maxWidth: "184px",
                                         minHeight: "250px", maxHeight: "250px"
-                                    }} onClick={() => { this.setState({ postId: w.id }) }}>
+                                    }} onClick={() => { this.addToCollection(w.id); }}>
 
                                     <div style={{
                                         minHeight: "101px"
@@ -64,39 +82,36 @@ export default class AddCollectionModel extends Component {
                             })}
                         </div>
                     </div>
-                    {this.state.postId > 0 && selectedworkPublication && <div className="col-md-12">
+                    <div className="col-md-12">
                         <h3>Selected Pieces</h3>
                         <br />
                         <div className="form-group">
                             <label>Title</label>
                             <input type="text" className="form-control" />
                         </div>
-                        <div className="form-group">
+                        <div className="col-md-12" style={{ maxHeight: "300px", overflow: "auto" }}>
+                            {this.getSelected().map(w => {
+                                return <div className={"border col-md-2 float-left mb-2 mr-3 border-info"}
+                                    style={{
+                                        cursor: "pointer", minWidth: "110px", maxWidth: "110px",
+                                        minHeight: "150px", maxHeight: "150px"
+                                    }}>
 
-                            <Card.Body style={{ padding: '1rem 0' }}>
-                                {selectedworkPublication && selectedworkPublication.publication_subject && (
-                                    <p className="content-card__text">
-                                        {selectedworkPublication.publication_subject}
-                                    </p>
-                                )}
-                                {selectedworkPublication && selectedworkPublication.publication_text && (
-                                    <p className="content-card__text" dangerouslySetInnerHTML={{ __html: selectedworkPublication.publication_text }}>
-                                    </p>
-                                )}
-                                {selectedworkPublication && selectedworkPublication.publication_img === '1' &&
-                                    <Image width="50" height="50" className="content-card__image m-auto" src={BASE_URL + selectedworkPublication.post} />
-                                }
+                                    <div >
+                                        {w.publication_img === "1" &&
+                                            <img className="pt-3" width="152" height="101" src={w.post} />}
+                                        {w.publication_vid === "1" &&
+                                            <VideoThumbnail className="content-card__video"
+                                                src={BASE_URL + w.post} className="pt-3" width="152" height="101" />
+                                        }
+                                    </div>
 
-                                {selectedworkPublication && selectedworkPublication.publication_vid === '1' && (
-                                    <video src={BASE_URL + selectedworkPublication.post} width="50" height="50" className="content-card__video m-auto" ></video>                                    
-                                )}
-                            </Card.Body>
+                                    <br />
+                                    <p dangerouslySetInnerHTML={{ __html: w.publication_text }}></p>
+                                </div>
+                            })}
                         </div>
-
-                    </ div>}
-
-
-
+                    </ div>
                 </Modal.Body>
                 <Modal.Footer style={{ flexDirection: "initial" }}>
                     <button type="button" className="btn btn-primary">Create</button>
