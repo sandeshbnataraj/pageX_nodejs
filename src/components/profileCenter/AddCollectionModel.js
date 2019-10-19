@@ -78,11 +78,11 @@ export default class AddCollectionModel extends Component {
                                     </p>
                                 )}
                                 {selectedworkPublication && selectedworkPublication.publication_img === '1' &&
-                                    <Image className="content-card__image" src={BASE_URL + selectedworkPublication.post} onClick={this.showPopup} />
+                                    <Image className="content-card__image" src={BASE_URL + selectedworkPublication.post} />
                                 }
 
                                 {selectedworkPublication && selectedworkPublication.publication_vid === '1' && (
-                                    <VideoThumbnail className="content-card__video" src={BASE_URL + selectedworkPublication.post} onClick={this.showPopup} />
+                                    <VideoThumbnail className="content-card__video" src={BASE_URL + selectedworkPublication.post} />
                                 )}
                             </Card.Body>
                         </div>
