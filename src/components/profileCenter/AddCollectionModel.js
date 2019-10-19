@@ -11,6 +11,11 @@ export default class AddCollectionModel extends Component {
         onHide: PropTypes.func.isRequired
     };
 
+    constructor() {
+        super({});
+        this.state = { postId: -1 };
+    }
+
     render() {
         const { show, onHide, workPublication } = this.props;
         return (
@@ -29,15 +34,13 @@ export default class AddCollectionModel extends Component {
                 <Modal.Body className="p-3">
 
                     <div className="form-group">
-                        <h3>Post Collection</h3>
-                        <br />
                         <h3>Recent Pieces</h3>
                         <br />
                         <div className="col-md-12" style={{ maxHeight: "370px", overflow: "auto" }}>
                             {workPublication && workPublication.map(w => {
-                                return <div className="border col-md-3 float-left mb-2 mr-3">
-                                    <input type="checkbox" />
-                                    <img width="152" height="101" src={w.post} /><br />
+                                return <div className={"border col-md-3 float-left mb-2 mr-3 " + (w.id === this.state.postId ? "border-info" : "")}
+                                    style={{ cursor: "pointer" }} onClick={() => { this.setState({ postId: w.id }) }}>
+                                    <img className="pt-3" width="152" height="101" src={w.post} /><br />
                                     <p dangerouslySetInnerHTML={{ __html: w.publication_text }}></p>
                                 </div>
                             })}
@@ -45,7 +48,7 @@ export default class AddCollectionModel extends Component {
                     </ div>
                 </Modal.Body>
                 <Modal.Footer style={{ flexDirection: "initial" }}>
-                    <button type="button" class="btn btn-primary">Create</button>
+                    <button type="button" className="btn btn-primary">Create</button>
                 </Modal.Footer>
             </Modal >
         );
