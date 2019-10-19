@@ -50,9 +50,9 @@ export default class AddCollectionModel extends Component {
                                     <div style={{
                                         minHeight: "101px"
                                     }}>
-                                        {w.publication_img === "1" && w.publication_vid === "0" &&
+                                        {w.publication_img === "1" &&
                                             <img className="pt-3" width="152" height="101" src={w.post} />}
-                                        {w.publication_img === "0" && w.publication_vid === "1" &&
+                                        {w.publication_vid === "1" &&
                                             <VideoThumbnail className="content-card__video"
                                                 src={BASE_URL + w.post} className="pt-3" width="152" height="101" />
                                         }
@@ -65,6 +65,12 @@ export default class AddCollectionModel extends Component {
                         </div>
                     </div>
                     {this.state.postId > 0 && selectedworkPublication && <div className="col-md-12">
+                        <h3>Selected Pieces</h3>
+                        <br />
+                        <div className="form-group">
+                            <label>Title</label>
+                            <input type="text" className="form-control" />
+                        </div>
                         <div className="form-group">
 
                             <Card.Body style={{ padding: '1rem 0' }}>
@@ -78,21 +84,18 @@ export default class AddCollectionModel extends Component {
                                     </p>
                                 )}
                                 {selectedworkPublication && selectedworkPublication.publication_img === '1' &&
-                                    <Image className="content-card__image" src={BASE_URL + selectedworkPublication.post} />
+                                    <Image width="50" height="50" className="content-card__image m-auto" src={BASE_URL + selectedworkPublication.post} />
                                 }
 
                                 {selectedworkPublication && selectedworkPublication.publication_vid === '1' && (
-                                    <VideoThumbnail className="content-card__video" src={BASE_URL + selectedworkPublication.post} />
+                                    <video src={BASE_URL + selectedworkPublication.post} width="50" height="50" className="content-card__video m-auto" ></video>                                    
                                 )}
                             </Card.Body>
                         </div>
 
                     </ div>}
 
-                    <div className="form-group">
-                        <label>Title</label>
-                        <input type="text" className="form-control" />
-                    </div>
+
 
                 </Modal.Body>
                 <Modal.Footer style={{ flexDirection: "initial" }}>
