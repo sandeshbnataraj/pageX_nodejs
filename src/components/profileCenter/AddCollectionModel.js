@@ -5,15 +5,17 @@ import VideoThumbnail from '../generic/VideoThumbnail';
 
 import "./AddCollectionModel.scss";
 import { BASE_URL } from "../../app.constants";
+import { createCollection } from "../../actions/userPublicationAction";
 
 export default class AddCollectionModel extends Component {
     static propTypes = {
         show: PropTypes.bool.isRequired,
-        onHide: PropTypes.func.isRequired
+        onHide: PropTypes.func.isRequired,
+        workPublication: PropTypes.array
     };
 
-    constructor() {
-        super({});
+    constructor(props) {
+        super(props);
         this.state = { postIds: [], coverPostId: -1, title: "" };
     }
 
@@ -33,6 +35,11 @@ export default class AddCollectionModel extends Component {
 
     getSelected() {
         return this.props.workPublication.filter(w => this.state.postIds.indexOf(w.id) > -1);
+    }
+
+    saveCollection() {
+        createCollection(this.state);
+        this.props.onHide();
     }
 
     render() {
@@ -55,7 +62,7 @@ export default class AddCollectionModel extends Component {
                     <div className="form-group">
                         <div className="col-md-12" style={{ maxHeight: "300px", overflow: "auto" }}>
                             {workPublication && workPublication.map(w => {
-                                return <div className={"border col-md-3 float-left mb-2 mr-3 " +
+                                return <div key={"main-" + w.id} className={"border col-md-3 float-left mb-2 mr-3 " +
                                     (this.getSelection(w.id) ? "border-info" : "")}
                                     style={{
                                         cursor: "pointer", minWidth: "184px", maxWidth: "184px",
@@ -93,7 +100,7 @@ export default class AddCollectionModel extends Component {
                         </div>
                         <div className="col-md-12" style={{ maxHeight: "300px", overflow: "auto" }}>
                             {this.getSelected().map(w => {
-                                return <div className={"border col-md-2 float-left mb-2 mr-3 border-info"}
+                                return <div key={"selection-" + w.id} className={"border col-md-2 float-left mb-2 mr-3 border-info"}
                                     style={{
                                         cursor: "pointer", minWidth: "110px", maxWidth: "110px",
                                         minHeight: "170px", maxHeight: "170px"
@@ -120,7 +127,7 @@ export default class AddCollectionModel extends Component {
                 </Modal.Body>
                 <Modal.Footer style={{ flexDirection: "initial" }}>
                     <button disabled={this.state.title.length === 0 || this.state.postIds.length === 0 || this.state.coverPostId < 1}
-                        type="button" className="btn btn-primary">Create</button>
+                        type="button" className="btn btn-primary" onClick={() => { this.saveCollection() }}>Create</button>
                 </Modal.Footer>
             </Modal >
         );
