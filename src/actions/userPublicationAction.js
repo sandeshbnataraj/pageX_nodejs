@@ -48,3 +48,7 @@ export const getOtherUserPublications = id => ({
 export const clearOtherUserPublication = () => ({
   type: CLEAR_OTHER_USER_PUBLICATIONS
 });
+
+export function createCollection(data) {
+  return axios.post("/api/createCollection/", data);
+}
