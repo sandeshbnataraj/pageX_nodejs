@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import ReactDOM from 'react-dom';
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { Card, DropdownButton, Dropdown, Form, Image } from "react-bootstrap";
@@ -214,6 +215,13 @@ class Publication extends Component {
   render() {
     const { className } = this.props;
     let sty = "shadow p-3 rounded";
+    const Outside = () => {
+console.log("=====================================================");
+      return (
+        ReactDOM.createPortal(<span style={{ float: "right" }}><button > Done </button></span>, document.querySelector('.ql-editor'))
+      );
+    }
+
     // let dropDown = "";
     // if (this.props.from) {
     //   if (this.props.from === "modal") {
@@ -301,7 +309,8 @@ class Publication extends Component {
               {this.props.publicationType === "work" &&
                 <div className="publication-form__control" style={{ clear: "both", height: "200px" }}>
                   <ReactQuill
-                    style={{ clear: "both", height: "160px" }}
+                    style={{ clear: "both", height: "200px" }}
+                    id="quill-editor"
                     name="text"
                     theme="snow"
                     onChange={(e) => { this.setState({ text: e }); }}
@@ -309,6 +318,7 @@ class Publication extends Component {
                     modules={Publication.modules}
                     formats={Publication.formats}
                   /><br />
+                  {document.getElementById('quill-editor') && <Outside />}
                 </div>}
               {this.props.publicationType !== "work" &&
                 <div className="publication-form__control">
