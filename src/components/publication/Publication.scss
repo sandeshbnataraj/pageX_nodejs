@@ -10,6 +10,10 @@
     border: 0;
   }
 
+  .ql-container{
+    border-radius: 6px;
+    background: cornsilk;
+  }
   .navbar-avatar {
     margin-right: 1rem;
     min-width: 3rem;
@@ -102,6 +106,7 @@
   .publish-button__update {
     color: white !important;
     background: #4b6584 !important;
+    font-size: .85rem;
     &:hover:enabled {
       background: #4b6584;
     }
@@ -110,7 +115,8 @@
       color: white;
     }
     margin: 0;
-    min-width: 140px;
+    // min-width: 140px;
+    min-width: 115px;
   }
 }
 
