@@ -1,4 +1,5 @@
 @import "../../style/abstract/abstract";
+@import url(http://allfont.net/allfont.css?fonts=courier);
 
 .publication-form {
   border-top: none;
@@ -13,6 +14,7 @@
   .ql-container {
     border-radius: 6px;
     background: cornsilk;
+    font-family: 'Courier', arial !important;
   }
 
   // .backgroundCornsilk {
@@ -168,8 +170,8 @@
   font-family: sans-serif !important;
 }
 
-.ql-font-Courier {
-  font-family: Courier !important;
+.ql-font-Courier {  
+  font-family: 'Courier', arial !important;
 }
 
 .ql-font-Serif {
