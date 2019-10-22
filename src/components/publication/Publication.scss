@@ -1,4 +1,5 @@
 @import "../../style/abstract/abstract";
+@import url(http://allfont.net/allfont.css?fonts=courier);
 
 .publication-form {
   border-top: none;
@@ -10,10 +11,37 @@
     border: 0;
   }
 
-  .ql-container{
+  .ql-container {
     border-radius: 6px;
     background: cornsilk;
+    font-family: 'Courier', arial !important;
   }
+
+  // .backgroundCornsilk {
+  //   background: cornsilk;
+  //   border-radius: 6px;
+  //   border: 1px solid #ccc;
+  // }
+  .btnShowOptions {
+    position: absolute;
+    right: 17px;
+    top: 193px;
+  }
+
+  .btnHideOptions {
+    position: absolute;
+    right: 17px;
+    top: 193px;
+  }
+
+  .ql-container {
+    font-size: 12px;
+  }
+
+  .h212 {
+    height: 212px !important;
+  }
+
   .navbar-avatar {
     margin-right: 1rem;
     min-width: 3rem;
@@ -106,7 +134,7 @@
   .publish-button__update {
     color: white !important;
     background: #4b6584 !important;
-    font-size: .85rem;
+    font-size: 0.85rem;
     &:hover:enabled {
       background: #4b6584;
     }
@@ -120,27 +148,30 @@
   }
 }
 
-.ql-picker-item[data-value="SansSerif"]::before {
+.ql-picker-item[data-value="SansSerif"]::before,
+.ql-picker-label[data-value="SansSerif"]::before {
   content: "Sans Serif" !important;
 }
 
-.ql-picker-item[data-value="Serif"]::before {
+.ql-picker-item[data-value="Serif"]::before,
+.ql-picker-label[data-value="Serif"]::before {
   content: "Serif" !important;
 }
-.ql-picker-item[data-value="Monospace"]::before {
+.ql-picker-item[data-value="Monospace"]::before,
+.ql-picker-label[data-value="Monospace"]::before {
   content: "Monospace" !important;
 }
+.ql-picker-item[data-value="Courier"]::before,
+.ql-picker-label[data-value="Courier"]::before {
+  content: "Courier" !important;
+}
 
-.ql-font-Serif {
+.ql-font-SansSerif {
   font-family: sans-serif !important;
 }
 
-.ql-font-Serif {
-  font-family: sans-serif !important;
-}
-
-.ql-font-Serif {
-  font-family: sans-serif !important;
+.ql-font-Courier {  
+  font-family: 'Courier', arial !important;
 }
 
 .ql-font-Serif {
