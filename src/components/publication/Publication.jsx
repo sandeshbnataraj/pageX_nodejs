@@ -32,7 +32,7 @@ const INITIAL_STATE = {
 
 const Quill = ReactQuill.Quill
 var Font = Quill.import('formats/font');
-Font.whitelist = ['SansSerif', 'Serif', 'Monospace', 'Courier'];
+Font.whitelist = ['Courier', 'SansSerif', 'Serif', 'Monospace'];
 Quill.register(Font, true);
 
 class Publication extends Component {
