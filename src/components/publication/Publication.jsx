@@ -32,7 +32,7 @@ const INITIAL_STATE = {
 
 const Quill = ReactQuill.Quill
 var Font = Quill.import('formats/font');
-Font.whitelist = ['SansSerif', 'Serif', 'Monospace'];
+Font.whitelist = ['SansSerif', 'Serif', 'Monospace', 'Courier'];
 Quill.register(Font, true);
 
 class Publication extends Component {
@@ -216,7 +216,7 @@ class Publication extends Component {
     const { className } = this.props;
     let sty = "shadow p-3 rounded";
     const Outside = () => {
-console.log("=====================================================");
+      console.log("=====================================================");
       return (
         ReactDOM.createPortal(<span style={{ float: "right" }}><button > Done </button></span>, document.querySelector('.ql-editor'))
       );
@@ -267,9 +267,9 @@ console.log("=====================================================");
         <div id="divalert" className="alert alert-success"
           style={{ display: "none" }}></div>
         <Card>
-          <Card.Body className="publication-form__body">
+          <Card.Body className={"publication-form__body" + (this.props.publicationType === "work" ? " backgroundCornsilk" : "")}>
             <div className={this.props.publicationType === "work" ? "" : "d-flex"}>
-              <figure className="navbar-avatar float-left">
+              {this.props.publicationType !== "work" && <figure className="navbar-avatar float-left">
                 <Link to="/profile">
                   <Image
                     src={
@@ -278,20 +278,9 @@ console.log("=====================================================");
                     className="navbar-avatar__image"
                   />
                 </Link>
-              </figure>
+              </figure>}
 
-              {this.props.publicationType === "work" &&
-                < div className="form-group">
-                  <button
-                    onClick={(e) => {
-                      e.preventDefault();
-                      this.setState({ showEditorToolBar: !this.state.showEditorToolBar })
-                    }}
-                    className="btn float-right mb-2 publish-button__update"
-                  >
-                    <span className="ml-2"> {!this.state.showEditorToolBar ? "Show Edit Options" : "Hide Edit Options"}</span>
-                  </button>
-                </div>}
+
 
               {/* {dropDown} */}
 
@@ -309,16 +298,31 @@ console.log("=====================================================");
               {this.props.publicationType === "work" &&
                 <div className="publication-form__control" style={{ clear: "both", height: "200px" }}>
                   <ReactQuill
-                    style={{ clear: "both", height: "200px" }}
+                    style={{ clear: "both", height: "170px" }}
                     id="quill-editor"
+                    className={!this.state.showEditorToolBar ? "h212" : ""}
                     name="text"
                     theme="snow"
                     onChange={(e) => { this.setState({ text: e }); }}
                     value={this.state.text}
                     modules={Publication.modules}
                     formats={Publication.formats}
-                  /><br />
-                  {document.getElementById('quill-editor') && <Outside />}
+                  />
+                  {this.props.publicationType === "work" &&
+                    < div className="form-group">
+                      <button
+                        onClick={(e) => {
+                          e.preventDefault();
+                          this.setState({ showEditorToolBar: !this.state.showEditorToolBar })
+                        }}
+                        className={"btn float-right mb-2 publish-button__update " +
+                          (!this.state.showEditorToolBar ? "btnShowOptions" : "btnHideOptions")}
+                      >
+                        <span className="ml-2"> {!this.state.showEditorToolBar ? "Show Edit Options" : "Hide Edit Options"}</span>
+                      </button>
+                    </div>}
+                  <br />
+                  {/* {document.getElementById('quill-editor') && <Outside />} */}
                 </div>}
               {this.props.publicationType !== "work" &&
                 <div className="publication-form__control">
