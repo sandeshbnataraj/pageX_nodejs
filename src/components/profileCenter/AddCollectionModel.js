@@ -58,29 +58,28 @@ export default class AddCollectionModel extends Component {
                     <div className="header-title">Create Collection</div>
                 </Modal.Header>
                 <Modal.Body className="p-3">
-                    <h3>Recent Pieces</h3>
+                    <h3 className="mb-3">Recent Pieces</h3>
                     <div className="form-group">
                         <div className="col-md-12" style={{ maxHeight: "300px", overflow: "auto" }}>
                             {workPublication && workPublication.map(w => {
-                                return <div key={"main-" + w.id} className={"border col-md-3 float-left mb-2 mr-3 " +
+                                return <div key={"main-" + w.id} className={"border col-md-2 float-left mb-2 mr-3 pt-1 " +
                                     (this.getSelection(w.id) ? "border-info" : "")}
                                     style={{
-                                        cursor: "pointer", minWidth: "184px", maxWidth: "184px",
-                                        minHeight: "200px", maxHeight: "200px"
+                                        cursor: "pointer", minWidth: "90px", maxWidth: "90px",
+                                        minHeight: "90px", maxHeight: "90px"
                                     }} onClick={() => { this.addToCollection(w.id); }}>
 
                                     <div style={{
-                                        minHeight: "150px", maxHeight: "150px"
+                                        minHeight: "50px", maxHeight: "850px0px"
                                     }}>
                                         {w.publication_img === "1" &&
-                                            <img className="pt-3" style={{ width: "100%" }} src={w.post} />}
+                                            <img className="pt-1" style={{ width: "100%", maxWidth: "50px", maxHeight: "50px" }}
+                                                src={w.post} />}
                                         {w.publication_vid === "1" &&
                                             <video
-                                                src={BASE_URL + w.post} className="pt-3" style={{ width: "100%" }} />
+                                                src={BASE_URL + w.post} className="pt-1" style={{ width: "100%" }} />
                                         }
                                     </div>
-
-                                    <br />
                                     <p style={{ fontSize: "12px" }} dangerouslySetInnerHTML={{ __html: w.publication_text }}></p>
                                 </div>
                             })}
@@ -100,25 +99,24 @@ export default class AddCollectionModel extends Component {
                         </div>
                         <div className="col-md-12" style={{ maxHeight: "300px", overflow: "auto" }}>
                             {this.getSelected().map(w => {
-                                return <div key={"selection-" + w.id} className={"border col-md-2 float-left mb-2 mr-3 border-info"}
+                                return <div key={"main-" + w.id} className={"border col-md-2 float-left mb-2 mr-3 pt-1 " +
+                                    (this.getSelection(w.id) ? "border-info" : "")}
                                     style={{
-                                        cursor: "pointer", minWidth: "110px", maxWidth: "110px",
-                                        minHeight: "170px", maxHeight: "170px"
-                                    }}>
+                                        cursor: "pointer", minWidth: "90px", maxWidth: "90px",
+                                        minHeight: "90px", maxHeight: "90px"
+                                    }} onClick={() => { this.addToCollection(w.id); }}>
 
-                                    <div style={{ minHeight: "118px", maxHeight: "118px" }}>
-                                        <input type="radio" name="coverpic" onChange={(e) => {
-                                            this.setState({ coverPostId: w.id });
-                                        }} />
+                                    <div style={{
+                                        minHeight: "50px", maxHeight: "850px0px"
+                                    }}>
                                         {w.publication_img === "1" &&
-                                            <img className="pt-3" style={{ width: "100%" }} src={w.post} />}
+                                            <img className="pt-1" style={{ width: "100%", maxWidth: "50px", maxHeight: "50px" }}
+                                                src={w.post} />}
                                         {w.publication_vid === "1" &&
                                             <video
-                                                src={BASE_URL + w.post} className="pt-3" style={{ width: "100%" }} />
+                                                src={BASE_URL + w.post} className="pt-1" style={{ width: "100%" }} />
                                         }
                                     </div>
-
-                                    <br />
                                     <p style={{ fontSize: "12px" }} dangerouslySetInnerHTML={{ __html: w.publication_text }}></p>
                                 </div>
                             })}
