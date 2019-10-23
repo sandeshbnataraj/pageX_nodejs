@@ -190,7 +190,7 @@ export default class ContentCard extends Component {
   render() {
     const { userPublication, userPublications } = this.props;
     return (
-      <div className="content-card shadow p-3 mb-5">
+      <div className={"content-card shadow p-3 mb-5 " + (userPublication.publication_type.toString() === "2" ? "workPublication" : "")}>
         <Popup
           show={this.state.modalShow}
           onHide={this.handleClose}
@@ -205,7 +205,7 @@ export default class ContentCard extends Component {
           isPromoted={this.state.isPromoted}
           formatCount={this.formatCount}
         />
-        <Card style={{ border: 'none' }}>
+        <Card style={{ border: 'none' }} >
           <Card.Header style={{ padding: 0 }}>
             <div className="d-flex justify-content-between">
               <div>
@@ -217,7 +217,7 @@ export default class ContentCard extends Component {
                   <span className="d-flex flex-column">
                     <Link to={{ pathname: '/profile/', search: queryString.stringify(Object.assign({}, { user_id: userPublication.user_id })), state: { currentuser: userPublication.currentuser } }}>
                       <h6
-                        id='username-content' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(userPublication, this.props.postIndex)} className="content-card__username">{userPublication && (userPublication.first_name )}</h6>
+                        id='username-content' ref={refList => this.refList = refList} onClick={() => this.handlePopOver(userPublication, this.props.postIndex)} className="content-card__username">{userPublication && (userPublication.first_name)}</h6>
                     </Link>
                     <Overlay
                       show={this.state.showPopOver[this.props.postIndex]}

@@ -1,4 +1,4 @@
-@import '../../style/abstract/abstract';
+@import "../../style/abstract/abstract";
 
 .content-card {
   background-color: $c-lightest;
@@ -8,7 +8,7 @@
   padding: 1rem;
   margin-top: 2rem;
   position: relative;
-  
+
   &__avatar {
     object-fit: cover;
     width: 3rem;
@@ -28,13 +28,14 @@
   }
   &__button {
     position: absolute;
-    right: 0; top: .5rem;
+    right: 0;
+    top: 0.5rem;
     margin-top: -1rem;
   }
   &__icon {
     color: $c-darkest;
     @include easeOut;
-    
+
     &:hover {
       color: $c-active;
     }
@@ -70,7 +71,7 @@
 
 .content-card-footer {
   &__item {
-    margin: 0 -.5rem;
+    margin: 0 -0.5rem;
   }
   &__button {
     @extend %h4;
@@ -79,14 +80,14 @@
     border: none;
     color: $c-darkest;
     @include easeOut;
-    margin: 0 .2rem;
-    
+    margin: 0 0.2rem;
+
     &:hover {
       color: $c-active;
       background: none;
       border: none;
     }
-    &:focus{
+    &:focus {
       box-shadow: none !important;
     }
   }
@@ -95,9 +96,16 @@
   color: #a7aba7;
 }
 .count-value {
-    font-size: .875rem;
-    font-weight: bold;
-    position: relative;
-    top: 2px;
-    cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: bold;
+  position: relative;
+  top: 2px;
+  cursor: pointer;
+}
+
+.workPublication .content-card__text {  
+  border-radius: 10px;
+  background: cornsilk !important;
+  background-color: cornsilk !important;
+  font-family: "Courier", arial !important;
 }
