@@ -1,5 +1,15 @@
 @import "../../style/abstract/abstract";
-@import url(http://allfont.net/allfont.css?fonts=courier);
+
+@font-face {
+  font-family: courier;
+  font-style: normal;
+  font-weight: 400;
+  src: local("Courier"), local("Courier-Regular"),
+    url(../../assets/fonts/courier_e50b9e0d3ba911758c5f7443992ba777.woff)
+      format("woff"),
+    url(../../assets/fonts/courier_e50b9e0d3ba911758c5f7443992ba777.ttf)
+      format("truetype");
+}
 
 .publication-form {
   border-top: none;
@@ -14,7 +24,7 @@
   .ql-container {
     border-radius: 6px;
     background: cornsilk;
-    font-family: 'Courier', arial !important;
+    font-family: "Courier", arial !important;
   }
 
   // .backgroundCornsilk {
@@ -170,8 +180,8 @@
   font-family: sans-serif !important;
 }
 
-.ql-font-Courier {  
-  font-family: 'Courier', arial !important;
+.ql-font-Courier {
+  font-family: "Courier", arial !important;
 }
 
 .ql-font-Serif {
